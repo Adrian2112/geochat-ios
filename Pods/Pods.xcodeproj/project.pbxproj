@@ -1,0 +1,288 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0BB264C1EF104F88B9AC9049 /* BZFoursquareRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 88BFF32E8DB349488621840A /* BZFoursquareRequest.h */; };
+		20F6EC5C4D96410CAF292ADF /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B24B6C6748B84636A5A93629 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-Wno-deprecated-objc-isa-usage -Wno-format"; }; };
+		27B78F9B11A24BD092C9949A /* BZFoursquare.h in Headers */ = {isa = PBXBuildFile; fileRef = 91FF27E1D78E4140BAC5F019 /* BZFoursquare.h */; };
+		405FD0EE7E464A3BA916140C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8023181258A74FB191C414FD /* Foundation.framework */; };
+		74C8C0C3D7044F188C5C34A0 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C24174E6CA14EFF88FDAAC0 /* JSONKit.h */; };
+		9EB5ED5C654441F78A516632 /* BZFoursquareRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C747F25087B4DFA8183F363 /* BZFoursquareRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C3DC178E458542129956FB4F /* PodsDummy_Pods.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8314E330644073A94D8C7B /* PodsDummy_Pods.m */; };
+		E86FF669D32842B09B40ECAA /* BZFoursquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CECB5EF6B4A4C3EBA873FF8 /* BZFoursquare.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		057EE9F758C1464CAD7F65BF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		0CECB5EF6B4A4C3EBA873FF8 /* BZFoursquare.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BZFoursquare.m; path = "Foursquare-iOS-API/BZFoursquare/BZFoursquare.m"; sourceTree = SOURCE_ROOT; };
+		3C24174E6CA14EFF88FDAAC0 /* JSONKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = JSONKit/JSONKit.h; sourceTree = SOURCE_ROOT; };
+		3C747F25087B4DFA8183F363 /* BZFoursquareRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BZFoursquareRequest.m; path = "Foursquare-iOS-API/BZFoursquare/BZFoursquareRequest.m"; sourceTree = SOURCE_ROOT; };
+		8023181258A74FB191C414FD /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		88BFF32E8DB349488621840A /* BZFoursquareRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BZFoursquareRequest.h; path = "Foursquare-iOS-API/BZFoursquare/BZFoursquareRequest.h"; sourceTree = SOURCE_ROOT; };
+		91FF27E1D78E4140BAC5F019 /* BZFoursquare.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BZFoursquare.h; path = "Foursquare-iOS-API/BZFoursquare/BZFoursquare.h"; sourceTree = SOURCE_ROOT; };
+		92C5B4170B3249D58C5D4EFA /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = SOURCE_ROOT; };
+		A1BA277D239846C49AE72F74 /* Pods-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-prefix.pch"; sourceTree = SOURCE_ROOT; };
+		B24B6C6748B84636A5A93629 /* JSONKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = JSONKit/JSONKit.m; sourceTree = SOURCE_ROOT; };
+		BF8314E330644073A94D8C7B /* PodsDummy_Pods.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PodsDummy_Pods.m; sourceTree = SOURCE_ROOT; };
+		EF77112C6CF84D9EBB5CF7DC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BD02AF68943248BDB583084A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				405FD0EE7E464A3BA916140C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0620258B25344FFB80E45B29 = {
+			isa = PBXGroup;
+			children = (
+				783AE1DFCADC4304899B1D1D /* Products */,
+				28D71AB3669D41BEBDDB25E5 /* Frameworks */,
+				7AF05DED0ECE4B2B836A4588 /* Pods */,
+				7FC4175D3BED4B089B7B9BD1 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		28D71AB3669D41BEBDDB25E5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8023181258A74FB191C414FD /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		783AE1DFCADC4304899B1D1D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EF77112C6CF84D9EBB5CF7DC /* libPods.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7AF05DED0ECE4B2B836A4588 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EEC663AAFA1F43849088CB3A /* Foursquare-iOS-API */,
+				FC0106989414482C872080E3 /* JSONKit */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7FC4175D3BED4B089B7B9BD1 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				82F41A02653147F28F28C609 /* Pods */,
+				BF8314E330644073A94D8C7B /* PodsDummy_Pods.m */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		82F41A02653147F28F28C609 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				92C5B4170B3249D58C5D4EFA /* Pods-resources.sh */,
+				A1BA277D239846C49AE72F74 /* Pods-prefix.pch */,
+				057EE9F758C1464CAD7F65BF /* Pods.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EEC663AAFA1F43849088CB3A /* Foursquare-iOS-API */ = {
+			isa = PBXGroup;
+			children = (
+				91FF27E1D78E4140BAC5F019 /* BZFoursquare.h */,
+				88BFF32E8DB349488621840A /* BZFoursquareRequest.h */,
+				0CECB5EF6B4A4C3EBA873FF8 /* BZFoursquare.m */,
+				3C747F25087B4DFA8183F363 /* BZFoursquareRequest.m */,
+			);
+			name = "Foursquare-iOS-API";
+			sourceTree = "<group>";
+		};
+		FC0106989414482C872080E3 /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				3C24174E6CA14EFF88FDAAC0 /* JSONKit.h */,
+				B24B6C6748B84636A5A93629 /* JSONKit.m */,
+			);
+			name = JSONKit;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CB2E32953AEB49BAB854BE5D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27B78F9B11A24BD092C9949A /* BZFoursquare.h in Headers */,
+				0BB264C1EF104F88B9AC9049 /* BZFoursquareRequest.h in Headers */,
+				74C8C0C3D7044F188C5C34A0 /* JSONKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		1CEB27ADBF3640E48ABDCAF7 /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 347898BA9B7541909AAC3C4F /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				88166C122A434086B37C7471 /* Sources */,
+				BD02AF68943248BDB583084A /* Frameworks */,
+				CB2E32953AEB49BAB854BE5D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Pods;
+			productName = Pods;
+			productReference = EF77112C6CF84D9EBB5CF7DC /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B638EBF6F915466BA0552274 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+			};
+			buildConfigurationList = 71653618BEA34F7F8AD45BDE /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0620258B25344FFB80E45B29;
+			productRefGroup = 783AE1DFCADC4304899B1D1D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1CEB27ADBF3640E48ABDCAF7 /* Pods */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		88166C122A434086B37C7471 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E86FF669D32842B09B40ECAA /* BZFoursquare.m in Sources */,
+				9EB5ED5C654441F78A516632 /* BZFoursquareRequest.m in Sources */,
+				20F6EC5C4D96410CAF292ADF /* JSONKit.m in Sources */,
+				C3DC178E458542129956FB4F /* PodsDummy_Pods.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2A257258DD494693883E739F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 057EE9F758C1464CAD7F65BF /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = "";
+				PODS_HEADERS_SEARCH_PATHS = "${PODS_BUILD_HEADERS_SEARCH_PATHS}";
+				PODS_ROOT = "${SRCROOT}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		36DD3911DC3B4B28B80703FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 057EE9F758C1464CAD7F65BF /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = "";
+				PODS_HEADERS_SEARCH_PATHS = "${PODS_BUILD_HEADERS_SEARCH_PATHS}";
+				PODS_ROOT = "${SRCROOT}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6E29AD4365BE41468ED46F44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		B10A660C9C1040E59C3C779A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		347898BA9B7541909AAC3C4F /* Build configuration list for PBXNativeTarget "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A257258DD494693883E739F /* Release */,
+				36DD3911DC3B4B28B80703FE /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		71653618BEA34F7F8AD45BDE /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E29AD4365BE41468ED46F44 /* Release */,
+				B10A660C9C1040E59C3C779A /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B638EBF6F915466BA0552274 /* Project object */;
+}

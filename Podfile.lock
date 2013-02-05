@@ -1,0 +1,14 @@
+
+PODS:
+- Foursquare-iOS-API (1.1.0):
+  - JSONKit (~> 1.4)
+- JSONKit (1.5pre)
+
+DEPENDENCIES:
+- Foursquare-iOS-API (~> 1.1.0)
+
+SPEC CHECKSUMS:
+  Foursquare-iOS-API: fd545c468ea39d46e3dc78a81abd87456f9f4996
+  JSONKit: 3d4708953ea7ae399a49777372d8b060a43ddd27
+
+COCOAPODS: 0.16.1
