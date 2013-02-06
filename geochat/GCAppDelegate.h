@@ -10,6 +10,7 @@
 
 @class GCLoginViewController;
 @class GCNavigationController;
+@class BZFoursquare;
 
 @interface GCAppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -18,4 +19,6 @@
 @property (strong, nonatomic) GCLoginViewController *loginViewController;
 @property (strong, nonatomic) GCNavigationController *navigationController;
 
+-(void) saveAccessToken:(NSString *)token;
+-(NSString *) readAccessToken;
 @end

@@ -26,6 +26,7 @@
         self.foursquare_api = [[BZFoursquare alloc] initWithClientID:@"W2XHXBWO2BSTSDJI1QPCZVIYBQFJJDOQUFLKW5TLLN4GRHRM" callbackURL:@"geochat://foursquare"];
         self.foursquare_api.version = @"20111119";
         self.foursquare_api.locale = [[NSLocale currentLocale] objectForKey:NSLocaleLanguageCode];
+        self.foursquare_api = [appDelegate getFoursquareClient];
         self.foursquare_api.sessionDelegate = self;
     }
     return self;
@@ -44,12 +45,12 @@
 # pragma mark BZFoursquareSessionDelegate
 
 - (void)foursquareDidAuthorize:(BZFoursquare *)foursquare {
-    // save access token for the next time
-    NSLog(@"%@", foursquare.accessToken);
-    
-    // redirect to places viewcontroller
     GCAppDelegate *appDelegate = (GCAppDelegate *)[[UIApplication sharedApplication] delegate];
     
+    // save access token for the next time
+    [appDelegate saveAccessToken:foursquare.accessToken];
+    
+    // redirect to places viewcontroller
     appDelegate.window.rootViewController = appDelegate.navigationController;
     
     [self.view removeFromSuperview];
