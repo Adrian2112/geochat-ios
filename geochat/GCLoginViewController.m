@@ -23,7 +23,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        GCAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        GCAppDelegate *appDelegate = GC_APP_DELEGATE();
         self.foursquare_api = [appDelegate getFoursquareClient];
         self.foursquare_api.sessionDelegate = self;
     }
@@ -43,7 +43,7 @@
 # pragma mark BZFoursquareSessionDelegate
 
 - (void)foursquareDidAuthorize:(BZFoursquare *)foursquare {
-    GCAppDelegate *appDelegate = (GCAppDelegate *)[[UIApplication sharedApplication] delegate];
+    GCAppDelegate *appDelegate = GC_APP_DELEGATE();
     
     // save access token for the next time
     [appDelegate saveAccessToken:foursquare.accessToken];

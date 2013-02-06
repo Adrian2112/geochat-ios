@@ -33,7 +33,7 @@
 {
     [super viewDidLoad];
 
-    GCAppDelegate *appDelegate = (GCAppDelegate *)[[UIApplication sharedApplication] delegate];
+    GCAppDelegate *appDelegate = GC_APP_DELEGATE();
     self.foursquare = [appDelegate getFoursquareClient];
     
     self.locationManager = [[CLLocationManager alloc] init];

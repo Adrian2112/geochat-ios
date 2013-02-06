@@ -183,6 +183,22 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     }
 }
 
+#pragma mark - Save/Send/Receive Messages
+
+- (void)sendMessage {
+    
+    // Send message.
+//    ACMessage *message = [NSEntityDescription insertNewObjectForEntityForName:@"ACMessage" inManagedObjectContext:_managedObjectContext];
+//    _conversation.lastMessageSentDate = message.sentDate = [NSDate date];
+//    _conversation.lastMessageText = message.text = _textView.text;
+//    [_conversation addMessagesObject:message];
+    
+//    [AC_APP_DELEGATE() sendMessage:message];
+    
+    _textView.text = nil;
+    [self textViewDidChange:_textView];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
