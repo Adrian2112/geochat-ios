@@ -11,7 +11,7 @@
 		3AA1B6F216C1876E001EE4E8 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1B6F116C1876E001EE4E8 /* data.plist */; };
 		3AA1B73A16C1C070001EE4E8 /* GCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1B73916C1C06F001EE4E8 /* GCNavigationController.m */; };
 		3AA1B73E16C1C091001EE4E8 /* GCPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1B73C16C1C091001EE4E8 /* GCPlacesViewController.m */; };
-		3AA1B73F16C1C091001EE4E8 /* GCPlacesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1B73D16C1C091001EE4E8 /* GCPlacesViewController.xib */; };
+		3AA1B74116C1E61C001EE4E8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA1B74016C1E61C001EE4E8 /* CoreLocation.framework */; };
 		3AF0C32C16C0DFDA009A3551 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF0C32B16C0DFDA009A3551 /* UIKit.framework */; };
 		3AF0C32E16C0DFDA009A3551 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF0C32D16C0DFDA009A3551 /* Foundation.framework */; };
 		3AF0C33016C0DFDB009A3551 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF0C32F16C0DFDA009A3551 /* CoreGraphics.framework */; };

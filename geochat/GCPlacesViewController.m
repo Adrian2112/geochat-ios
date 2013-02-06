@@ -7,8 +7,14 @@
 //
 
 #import "GCPlacesViewController.h"
+#import "GCAppDelegate.h"
+#import "BZFoursquareRequest.h"
+#import "BZFoursquare.h"
 
 @interface GCPlacesViewController ()
+
+@property (strong, nonatomic) BZFoursquareRequest *request;
+@property (strong, nonatomic) BZFoursquare *foursquare;
 
 @end
 
@@ -18,7 +24,6 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -27,6 +32,9 @@
 {
     [super viewDidLoad];
 
+    GCAppDelegate *appDelegate = (GCAppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.foursquare = [appDelegate getFoursquareClient];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  

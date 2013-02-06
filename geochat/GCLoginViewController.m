@@ -23,9 +23,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.foursquare_api = [[BZFoursquare alloc] initWithClientID:@"W2XHXBWO2BSTSDJI1QPCZVIYBQFJJDOQUFLKW5TLLN4GRHRM" callbackURL:@"geochat://foursquare"];
-        self.foursquare_api.version = @"20111119";
-        self.foursquare_api.locale = [[NSLocale currentLocale] objectForKey:NSLocaleLanguageCode];
+        GCAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         self.foursquare_api = [appDelegate getFoursquareClient];
         self.foursquare_api.sessionDelegate = self;
     }
