@@ -12,6 +12,7 @@
 @implementation GCConversation
 
 @synthesize messages = _messages;
+@synthesize draft = _draft;
 
 -(id) initWithPlaceId:(NSString *)place_id {
     self = [super init];

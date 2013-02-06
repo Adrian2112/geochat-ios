@@ -11,6 +11,7 @@
 @interface GCConversation : NSObject
 
 @property (strong, nonatomic) NSArray *messages;
+@property (strong, nonatomic) NSString *draft;
 
 -(id)initWithPlaceId:(NSString *)place_id;
 

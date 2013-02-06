@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) NSString *message;
 @property (strong, nonatomic) NSString *author;
-@property (strong, nonatomic) NSString *created_at;
+@property (strong, nonatomic) NSDate *created_at;
 
 -(id)initWithDictionary:(NSDictionary *)dictionary;
 

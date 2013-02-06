@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GCConversationViewController : UITableViewController
+@interface GCConversationViewController : UIViewController
 
 @property (strong, nonatomic) NSString *place_id;
 @property (strong, nonatomic) NSString *place_name;
