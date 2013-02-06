@@ -139,7 +139,7 @@
     
     CLLocation *lastLocation = [location lastObject];
     NSLog(@"%f, %f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude);
-    NSString *coordinates = [[NSString alloc] initWithFormat:@"%f,%f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude];
+    NSString *coordinates = [NSString stringWithFormat:@"%f,%f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude];
     
     NSDictionary *parameters = @{@"ll" : coordinates}; //[NSDictionary dictionaryWithObjectsAndKeys:coordinates, @"ll", nil];
     
