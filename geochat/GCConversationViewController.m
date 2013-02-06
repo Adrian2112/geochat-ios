@@ -11,7 +11,7 @@
 #import "GCMessage.h"
 #import "ACPlaceholderTextView.h"
 
-
+#define kChatBarHeight4                      94
 #define CHAT_BAR_HEIGHT                      40
 #define TEXT_VIEW_X                          7   // 40  (with CameraButton)
 #define TEXT_VIEW_Y                          2
@@ -65,12 +65,14 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     _tableView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.allowsSelection = NO;
 //    _tableView.backgroundColor = [UIColor colorWithRed:0.859 green:0.886 blue:0.929 alpha:1];
 //    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     
     // Create messageInputBar to contain _textView, messageInputBarBackgroundImageView, & _sendButton.
     UIImageView *messageInputBar = [[UIImageView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-CHAT_BAR_HEIGHT, self.view.frame.size.width, CHAT_BAR_HEIGHT)];
+
     messageInputBar.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin);
     messageInputBar.opaque = YES;
     messageInputBar.userInteractionEnabled = YES; // makes subviews tappable
@@ -128,9 +130,28 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    UIKeyboardNotificationsObserve();
+    [_tableView flashScrollIndicators];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self scrollToBottomAnimated:NO];
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated {
+    UIKeyboardNotificationsUnobserve(); // as soon as possible
+    [super viewWillDisappear:animated];
+}
+
+
 #pragma mark - Keyboard Notifications
 
 - (void)keyboardWillShow:(NSNotification *)notification {
+    
     NSTimeInterval animationDuration;
     UIViewAnimationCurve animationCurve;
     CGRect frameEnd;
@@ -140,14 +161,20 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&frameEnd];
     
     //    NSLog(@"animationDuration: %f", animationDuration); // TODO: Why 0.35 on viewDidLoad?
-    [UIView animateWithDuration:animationDuration delay:0.0 options:(UIViewAnimationOptionsFromCurve(animationCurve) | UIViewAnimationOptionBeginFromCurrentState) animations:^{
+    [UIView animateWithDuration:animationDuration delay:0.0 options:(UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionBeginFromCurrentState) animations:^{
         CGFloat viewHeight = [self.view convertRect:frameEnd fromView:nil].origin.y;
         UIView *messageInputBar = _textView.superview;
-        UIViewSetFrameY(messageInputBar, viewHeight-messageInputBar.frame.size.height);
+        
+        CGFloat y = viewHeight-messageInputBar.frame.size.height;
+        
+        UIView *view = messageInputBar;
+        view.frame = CGRectMake(view.frame.origin.x, y, view.frame.size.width, view.frame.size.height);
+        
         _tableView.contentInset = _tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, self.view.frame.size.height-viewHeight, 0);
         [self scrollToBottomAnimated:NO];
     } completion:nil];
 }
+
 
 - (void)scrollToBottomAnimated:(BOOL)animated {
     NSInteger numberOfRows = [_tableView numberOfRowsInSection:0];
@@ -194,6 +221,45 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+#pragma mark UITextViewDelegate
+
+- (void)textViewDidChange:(UITextView *)textView {
+    // Change height of _tableView & messageInputBar to match textView's content height.
+    CGFloat textViewContentHeight = textView.contentSize.height + 4 ;
+//    CGFloat changeInHeight = textViewContentHeight; // - _previousTextViewContentHeight;
+    
+//    if (textViewContentHeight+changeInHeight > 72+2){ //kChatBarHeight4+2) {
+//        changeInHeight = 72+2;// kChatBarHeight4+2; //-_previousTextViewContentHeight;
+//    }
+    UIView *messageInputBar = _textView.superview;
+    CGFloat changeInHeight = 0;
+    
+    if (textViewContentHeight <= 100) {
+        changeInHeight = textViewContentHeight - messageInputBar.frame.size.height;
+    }
+    
+    if (changeInHeight) {
+        [UIView animateWithDuration:0.2 animations:^{
+            _tableView.contentInset = _tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, _tableView.contentInset.bottom+changeInHeight, 0);
+            [self scrollToBottomAnimated:NO];
+            UIView *messageInputBar = _textView.superview;
+            messageInputBar.frame = CGRectMake(0, messageInputBar.frame.origin.y-changeInHeight, messageInputBar.frame.size.width, messageInputBar.frame.size.height+changeInHeight);
+        } completion:^(BOOL finished) {
+            [_textView updateShouldDrawPlaceholder];
+        }];
+//        _previousTextViewContentHeight = MIN(textViewContentHeight, kChatBarHeight4+2);
+    }
+    
+    // Enable/disable sendButton if textView.text has/lacks length.
+    if ([textView.text length]) {
+        _sendButton.enabled = YES;
+        _sendButton.titleLabel.alpha = 1;
+    } else {
+        _sendButton.enabled = NO;
+        _sendButton.titleLabel.alpha = 0.5f; // Sam S. says 0.4f
+    }
 }
 
 @end
