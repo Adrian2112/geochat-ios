@@ -12,6 +12,9 @@
 		3AA1B73A16C1C070001EE4E8 /* GCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1B73916C1C06F001EE4E8 /* GCNavigationController.m */; };
 		3AA1B73E16C1C091001EE4E8 /* GCPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1B73C16C1C091001EE4E8 /* GCPlacesViewController.m */; };
 		3AA1B74116C1E61C001EE4E8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA1B74016C1E61C001EE4E8 /* CoreLocation.framework */; };
+		3AA1B74816C1FEA5001EE4E8 /* GCConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1B74716C1FEA5001EE4E8 /* GCConversation.m */; };
+		3AA1B74B16C1FF88001EE4E8 /* GCMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1B74A16C1FF88001EE4E8 /* GCMessage.m */; };
+		3AA1B75116C20120001EE4E8 /* GCConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1B75016C20120001EE4E8 /* GCConversationViewController.m */; };
 		3AF0C32C16C0DFDA009A3551 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF0C32B16C0DFDA009A3551 /* UIKit.framework */; };
 		3AF0C32E16C0DFDA009A3551 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF0C32D16C0DFDA009A3551 /* Foundation.framework */; };
 		3AF0C33016C0DFDB009A3551 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF0C32F16C0DFDA009A3551 /* CoreGraphics.framework */; };
@@ -33,7 +36,13 @@
 		3AA1B73916C1C06F001EE4E8 /* GCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCNavigationController.m; sourceTree = "<group>"; };
 		3AA1B73B16C1C091001EE4E8 /* GCPlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPlacesViewController.h; sourceTree = "<group>"; };
 		3AA1B73C16C1C091001EE4E8 /* GCPlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPlacesViewController.m; sourceTree = "<group>"; };
-		3AA1B73D16C1C091001EE4E8 /* GCPlacesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCPlacesViewController.xib; sourceTree = "<group>"; };
+		3AA1B74016C1E61C001EE4E8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3AA1B74616C1FEA5001EE4E8 /* GCConversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCConversation.h; sourceTree = "<group>"; };
+		3AA1B74716C1FEA5001EE4E8 /* GCConversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCConversation.m; sourceTree = "<group>"; };
+		3AA1B74916C1FF88001EE4E8 /* GCMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCMessage.h; sourceTree = "<group>"; };
+		3AA1B74A16C1FF88001EE4E8 /* GCMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCMessage.m; sourceTree = "<group>"; };
+		3AA1B74F16C20120001EE4E8 /* GCConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCConversationViewController.h; sourceTree = "<group>"; };
+		3AA1B75016C20120001EE4E8 /* GCConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCConversationViewController.m; sourceTree = "<group>"; };
 		3AF0C32816C0DFDA009A3551 /* geochat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = geochat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF0C32B16C0DFDA009A3551 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3AF0C32D16C0DFDA009A3551 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -59,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AA1B74116C1E61C001EE4E8 /* CoreLocation.framework in Frameworks */,
 				3AF0C35B16C0F453009A3551 /* MobileCoreServices.framework in Frameworks */,
 				3AF0C32C16C0DFDA009A3551 /* UIKit.framework in Frameworks */,
 				3AF0C32E16C0DFDA009A3551 /* Foundation.framework in Frameworks */,
@@ -70,9 +80,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3AA1B74316C1FB33001EE4E8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3AF0C34E16C0E05F009A3551 /* GCLoginViewController.h */,
+				3AF0C34F16C0E05F009A3551 /* GCLoginViewController.m */,
+				3AA1B73B16C1C091001EE4E8 /* GCPlacesViewController.h */,
+				3AA1B73C16C1C091001EE4E8 /* GCPlacesViewController.m */,
+				3AA1B74F16C20120001EE4E8 /* GCConversationViewController.h */,
+				3AA1B75016C20120001EE4E8 /* GCConversationViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3AA1B74416C1FB51001EE4E8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3AF0C35016C0E05F009A3551 /* GCLoginViewController.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		3AA1B74516C1FE86001EE4E8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3AA1B74616C1FEA5001EE4E8 /* GCConversation.h */,
+				3AA1B74716C1FEA5001EE4E8 /* GCConversation.m */,
+				3AA1B74916C1FF88001EE4E8 /* GCMessage.h */,
+				3AA1B74A16C1FF88001EE4E8 /* GCMessage.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		3AF0C31F16C0DFDA009A3551 = {
 			isa = PBXGroup;
 			children = (
+				3AA1B74016C1E61C001EE4E8 /* CoreLocation.framework */,
 				3AF0C33116C0DFDB009A3551 /* geochat */,
 				3AF0C32A16C0DFDA009A3551 /* Frameworks */,
 				3AF0C32916C0DFDA009A3551 /* Products */,
@@ -104,17 +147,14 @@
 		3AF0C33116C0DFDB009A3551 /* geochat */ = {
 			isa = PBXGroup;
 			children = (
-				3AF0C33A16C0DFDB009A3551 /* GCAppDelegate.h */,
+				3AA1B74416C1FB51001EE4E8 /* Views */,
+				3AA1B74316C1FB33001EE4E8 /* Controllers */,
+				3AA1B74516C1FE86001EE4E8 /* Models */,
 				3AF0C33B16C0DFDB009A3551 /* GCAppDelegate.m */,
-				3AF0C34E16C0E05F009A3551 /* GCLoginViewController.h */,
-				3AF0C34F16C0E05F009A3551 /* GCLoginViewController.m */,
-				3AF0C35016C0E05F009A3551 /* GCLoginViewController.xib */,
+				3AF0C33A16C0DFDB009A3551 /* GCAppDelegate.h */,
 				3AF0C33216C0DFDB009A3551 /* Supporting Files */,
 				3AA1B73816C1C06F001EE4E8 /* GCNavigationController.h */,
 				3AA1B73916C1C06F001EE4E8 /* GCNavigationController.m */,
-				3AA1B73B16C1C091001EE4E8 /* GCPlacesViewController.h */,
-				3AA1B73C16C1C091001EE4E8 /* GCPlacesViewController.m */,
-				3AA1B73D16C1C091001EE4E8 /* GCPlacesViewController.xib */,
 			);
 			path = geochat;
 			sourceTree = "<group>";
@@ -191,7 +231,6 @@
 				3AF0C34216C0DFDB009A3551 /* Default-568h@2x.png in Resources */,
 				3AF0C35216C0E05F009A3551 /* GCLoginViewController.xib in Resources */,
 				3AA1B6F216C1876E001EE4E8 /* data.plist in Resources */,
-				3AA1B73F16C1C091001EE4E8 /* GCPlacesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +263,9 @@
 				3AF0C35116C0E05F009A3551 /* GCLoginViewController.m in Sources */,
 				3AA1B73A16C1C070001EE4E8 /* GCNavigationController.m in Sources */,
 				3AA1B73E16C1C091001EE4E8 /* GCPlacesViewController.m in Sources */,
+				3AA1B74816C1FEA5001EE4E8 /* GCConversation.m in Sources */,
+				3AA1B74B16C1FF88001EE4E8 /* GCMessage.m in Sources */,
+				3AA1B75116C20120001EE4E8 /* GCConversationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

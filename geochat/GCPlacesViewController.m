@@ -10,23 +10,24 @@
 #import "GCAppDelegate.h"
 #import "BZFoursquareRequest.h"
 #import "BZFoursquare.h"
+#import <CoreLocation/CoreLocation.h>
+#import "GCConversationViewController.h"
 
-@interface GCPlacesViewController ()
+@interface GCPlacesViewController () <BZFoursquareRequestDelegate, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) BZFoursquareRequest *request;
 @property (strong, nonatomic) BZFoursquare *foursquare;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) NSArray *places;
 
 @end
 
 @implementation GCPlacesViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-    }
-    return self;
-}
+@synthesize request = _request;
+@synthesize foursquare = _foursquare;
+@synthesize locationManager = _locationManager;
+@synthesize places = _places;
 
 - (void)viewDidLoad
 {
@@ -34,6 +35,14 @@
 
     GCAppDelegate *appDelegate = (GCAppDelegate *)[[UIApplication sharedApplication] delegate];
     self.foursquare = [appDelegate getFoursquareClient];
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyThreeKilometers];
+    
+    [self.locationManager startUpdatingLocation];
+    
+    self.title = @"Venues near you";
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -52,16 +61,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [self.places count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,61 +77,75 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    // Configure the cell...
-    
+    cell.textLabel.text = self.places[indexPath.row][@"name"];
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    
+    GCConversationViewController *conversationViewController = [[GCConversationViewController alloc] init];
+    
+    NSDictionary *place = self.places[indexPath.row];
+    NSString *place_id = place[@"id"];
+    NSString *place_name = place[@"name"];
+    
+    conversationViewController.place_id = place_id;
+    conversationViewController.place_name = place_name;
+    
+    [self.navigationController pushViewController:conversationViewController animated:YES];
+}
+
+#pragma mark - FoursquareRequest Delegates
+
+- (void) foursquareRequestWithPath:(NSString *)path HTTPMethod:(NSString *)method parameters:(NSDictionary *)parameters{
+    if (self.request) [self.request cancel];
+    
+    self.request = [self.foursquare requestWithPath:path HTTPMethod:method parameters:parameters delegate:self];
+    [self.request start];
+}
+
+- (void)requestDidStartLoading:(BZFoursquareRequest *)request{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+- (void)requestDidFinishLoading:(BZFoursquareRequest *)request{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    self.places = request.response[@"venues"];
+    [self updateView];
+}
+
+- (void)request:(BZFoursquareRequest *)request didFailWithError:(NSError *)error{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    NSLog(@"Foursquare request error: %@", error);
+}
+
+- (void)updateView {
+    if ([self isViewLoaded]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        [self.tableView reloadData];
+        if (indexPath) {
+            [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+        }
+    }
+}
+
+#pragma mark - CLLocationManager Delegate
+
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)location{
+    
+    CLLocation *lastLocation = [location lastObject];
+    NSLog(@"%f, %f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude);
+    NSString *coordinates = [[NSString alloc] initWithFormat:@"%f,%f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude];
+    
+    NSDictionary *parameters = @{@"ll" : coordinates}; //[NSDictionary dictionaryWithObjectsAndKeys:coordinates, @"ll", nil];
+    
+    [self foursquareRequestWithPath:@"venues/search" HTTPMethod:@"GET" parameters:parameters];
+    
+    [self.locationManager stopUpdatingLocation];
 }
 
 @end
