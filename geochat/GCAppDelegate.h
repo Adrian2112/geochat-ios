@@ -30,5 +30,6 @@
 -(void) saveAccessToken:(NSString *)token;
 -(NSString *) readAccessToken;
 -(BZFoursquare *) getFoursquareClient;
+-(void) logout;
 
 @end

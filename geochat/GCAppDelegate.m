@@ -57,6 +57,16 @@
                                                       userInfo: nil];
 }
 
+-(void)logout{
+    [self saveAccessToken:@""];
+    
+    self.loginViewController = [[GCLoginViewController alloc] initWithNibName:@"GCLoginViewController" bundle:nil];
+
+    [UIView transitionWithView:self.window duration:0.5 options: UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+        self.window.rootViewController = self.loginViewController;
+    } completion:nil];
+}
+
 # pragma mark application opened with urlscheme
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     GCLoginViewController *loginViewController= (GCLoginViewController *) self.window.rootViewController;
@@ -86,6 +96,9 @@
         
         //load from savedStock example int value
         self.accessToken = [savedStock objectForKey:@"accessToken"];
+        if ([self.accessToken isEqualToString:@""]) {
+            self.accessToken = nil;
+        }
     }
         
     return self.accessToken;

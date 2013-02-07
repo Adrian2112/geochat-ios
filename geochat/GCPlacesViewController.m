@@ -44,6 +44,9 @@
     
     self.title = @"Venues near you";
     
+    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logout:)];
+    self.navigationItem.rightBarButtonItem = logoutButton;
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -51,10 +54,11 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void) logout:(UIButton *)button{
+    NSLog(@"Logout");
+    [GC_APP_DELEGATE() logout];
+    
+    [self.view removeFromSuperview];
 }
 
 #pragma mark - Table view data source
