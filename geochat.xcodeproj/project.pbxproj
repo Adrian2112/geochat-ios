@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		360DA3192B844750AF28EFA3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F3300638B741B1B4539FC4 /* libPods.a */; };
+		3A03182216C37ED100406308 /* GCMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A03182116C37ED100406308 /* GCMessageCell.m */; };
+		3A03182416C37EEA00406308 /* GCMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A03182316C37EEA00406308 /* GCMessageCell.xib */; };
 		3A78E02416C236850067FC2A /* ACPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A78E02316C236850067FC2A /* ACPlaceholderTextView.m */; };
 		3A78E02E16C2369D0067FC2A /* MessageInputBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A78E02616C2369D0067FC2A /* MessageInputBarBackground.png */; };
 		3A78E02F16C2369D0067FC2A /* MessageInputBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A78E02716C2369D0067FC2A /* MessageInputBarBackground@2x.png */; };
@@ -17,6 +19,7 @@
 		3A78E03316C2369D0067FC2A /* SendButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A78E02B16C2369D0067FC2A /* SendButton@2x.png */; };
 		3A78E03416C2369D0067FC2A /* SendButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A78E02C16C2369D0067FC2A /* SendButtonHighlighted.png */; };
 		3A78E03516C2369D0067FC2A /* SendButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A78E02D16C2369D0067FC2A /* SendButtonHighlighted@2x.png */; };
+		3A8C343016C42C1B00088A97 /* default_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C342F16C42C1B00088A97 /* default_avatar.png */; };
 		3AA1B6F216C1876E001EE4E8 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1B6F116C1876E001EE4E8 /* data.plist */; };
 		3AA1B73A16C1C070001EE4E8 /* GCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1B73916C1C06F001EE4E8 /* GCNavigationController.m */; };
 		3AA1B73E16C1C091001EE4E8 /* GCPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1B73C16C1C091001EE4E8 /* GCPlacesViewController.m */; };
@@ -40,6 +43,9 @@
 
 /* Begin PBXFileReference section */
 		13F3300638B741B1B4539FC4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A03182016C37ED100406308 /* GCMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCMessageCell.h; sourceTree = "<group>"; };
+		3A03182116C37ED100406308 /* GCMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCMessageCell.m; sourceTree = "<group>"; };
+		3A03182316C37EEA00406308 /* GCMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCMessageCell.xib; sourceTree = "<group>"; };
 		3A78E02216C236850067FC2A /* ACPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACPlaceholderTextView.h; sourceTree = "<group>"; };
 		3A78E02316C236850067FC2A /* ACPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACPlaceholderTextView.m; sourceTree = "<group>"; };
 		3A78E02616C2369D0067FC2A /* MessageInputBarBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MessageInputBarBackground.png; sourceTree = "<group>"; };
@@ -50,6 +56,7 @@
 		3A78E02B16C2369D0067FC2A /* SendButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SendButton@2x.png"; sourceTree = "<group>"; };
 		3A78E02C16C2369D0067FC2A /* SendButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SendButtonHighlighted.png; sourceTree = "<group>"; };
 		3A78E02D16C2369D0067FC2A /* SendButtonHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SendButtonHighlighted@2x.png"; sourceTree = "<group>"; };
+		3A8C342F16C42C1B00088A97 /* default_avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_avatar.png; sourceTree = "<group>"; };
 		3AA1B6F116C1876E001EE4E8 /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = data.plist; path = geochat/data.plist; sourceTree = "<group>"; };
 		3AA1B73816C1C06F001EE4E8 /* GCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCNavigationController.h; sourceTree = "<group>"; };
 		3AA1B73916C1C06F001EE4E8 /* GCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCNavigationController.m; sourceTree = "<group>"; };
@@ -105,6 +112,7 @@
 				3A78E02616C2369D0067FC2A /* MessageInputBarBackground.png */,
 				3A78E02716C2369D0067FC2A /* MessageInputBarBackground@2x.png */,
 				3A78E02816C2369D0067FC2A /* MessageInputFieldBackground.png */,
+				3A8C342F16C42C1B00088A97 /* default_avatar.png */,
 				3A78E02916C2369D0067FC2A /* MessageInputFieldBackground@2x.png */,
 				3A78E02A16C2369D0067FC2A /* SendButton.png */,
 				3A78E02B16C2369D0067FC2A /* SendButton@2x.png */,
@@ -133,6 +141,9 @@
 				3AF0C35016C0E05F009A3551 /* GCLoginViewController.xib */,
 				3A78E02216C236850067FC2A /* ACPlaceholderTextView.h */,
 				3A78E02316C236850067FC2A /* ACPlaceholderTextView.m */,
+				3A03182016C37ED100406308 /* GCMessageCell.h */,
+				3A03182116C37ED100406308 /* GCMessageCell.m */,
+				3A03182316C37EEA00406308 /* GCMessageCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -276,6 +287,8 @@
 				3A78E03316C2369D0067FC2A /* SendButton@2x.png in Resources */,
 				3A78E03416C2369D0067FC2A /* SendButtonHighlighted.png in Resources */,
 				3A78E03516C2369D0067FC2A /* SendButtonHighlighted@2x.png in Resources */,
+				3A03182416C37EEA00406308 /* GCMessageCell.xib in Resources */,
+				3A8C343016C42C1B00088A97 /* default_avatar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +325,7 @@
 				3AA1B74B16C1FF88001EE4E8 /* GCMessage.m in Sources */,
 				3AA1B75116C20120001EE4E8 /* GCConversationViewController.m in Sources */,
 				3A78E02416C236850067FC2A /* ACPlaceholderTextView.m in Sources */,
+				3A03182216C37ED100406308 /* GCMessageCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

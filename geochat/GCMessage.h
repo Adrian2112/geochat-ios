@@ -17,5 +17,6 @@
 -(id)initWithDictionary:(NSDictionary *)dictionary;
 -(id)initWithMessage:(NSString *)message user:(NSString *)user;
 -(NSDictionary *)toDictionary;
+-(NSString *)createdAtString;
 
 @end

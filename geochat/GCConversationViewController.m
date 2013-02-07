@@ -12,6 +12,7 @@
 #import "ACPlaceholderTextView.h"
 #import <socket.IO/SocketIO.h>
 #import "GCAppDelegate.h"
+#import "GCMessageCell.h"
 
 #define kChatBarHeight4                      94
 #define CHAT_BAR_HEIGHT                      40
@@ -243,17 +244,34 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"GCMessageCell";
+    
+    GCMessageCell *cell = (GCMessageCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"GCMessageCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
     }
     
     GCMessage *message = self.conversation.messages[indexPath.row];
     
-    cell.textLabel.text = message.message;
+    cell.message.text = message.message;
+    cell.date.text = [message createdAtString];
+    cell.user.text = message.user;
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"GCMessageCell" owner:self options:nil];
+    GCMessageCell *cell = cell = [nib objectAtIndex:0];
+
+    GCMessage *message = self.conversation.messages[indexPath.row];
+
+    cell.message.text = message.message;
+    
+    return [cell getHeight];
 }
 
 #pragma mark - Table view delegate
