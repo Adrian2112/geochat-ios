@@ -13,16 +13,17 @@
 #import "GCPlacesViewController.h"
 #import "GCConversationViewController.h"
 #import "BZFoursquare.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface GCAppDelegate()
-
-@property (strong, nonatomic) NSString *accessToken;
 
 @end
 
 @implementation GCAppDelegate
 
 @synthesize accessToken = _accessToken;
+@synthesize name = _name;
+@synthesize photo = _photo;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -33,7 +34,9 @@
     
     self.navigationController = [[GCNavigationController alloc] initWithRootViewController:placesViewController];
     
-    if ([self readAccessToken]) {
+    [self initializeVariables];
+    
+    if (self.accessToken) {
         self.window.rootViewController = self.navigationController;
     } else {
         self.loginViewController = [[GCLoginViewController alloc] initWithNibName:@"GCLoginViewController" bundle:nil];
@@ -77,31 +80,45 @@
 # pragma mark store and read data from data.plist
 
 - (void) saveAccessToken:(NSString *)accessToken{
+    [self saveValue:accessToken withKey:@"acessToken"];
+    self.accessToken = accessToken;
+}
+
+-(void) saveValue:(NSString *)value withKey:(NSString *)key{
     NSString *path = [self getPathForDataStorage];
     
     NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
     
-    [data setObject:accessToken forKey:@"accessToken"];
-    self.accessToken = accessToken;
-    
+    [data setObject:value forKey:key];
     [data writeToFile:path atomically:YES];
+    
+    if ([key isEqualToString:@"accessToken"]) {
+        self.accessToken = value;
+    } else if ([key isEqualToString:@"photo"]) {
+        [self.photo setImageWithURL:[NSURL URLWithString:value]
+                                       placeholderImage:[UIImage imageNamed:@"default_avatar.png"]];
+    } else if ([key isEqualToString:@"name"]){
+        self.name = value;
+    }
 }
 
-- (NSString *) readAccessToken{
+- (void) initializeVariables{
     
-    if (!self.accessToken){
-        NSString *path = [self getPathForDataStorage];
-        
-        NSMutableDictionary *savedStock = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
-        
-        //load from savedStock example int value
-        self.accessToken = [savedStock objectForKey:@"accessToken"];
-        if ([self.accessToken isEqualToString:@""]) {
-            self.accessToken = nil;
-        }
+    NSString *path = [self getPathForDataStorage];
+    
+    NSMutableDictionary *savedStock = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
+    
+    //load from savedStock example int value
+    self.accessToken = [savedStock objectForKey:@"accessToken"];
+    if ([self.accessToken isEqualToString:@""]) {
+        self.accessToken = nil;
     }
-        
-    return self.accessToken;
+    
+    self.name = [savedStock objectForKey:@"name"];
+    NSString *phot_url = [savedStock objectForKey:@"photo"];
+    
+    [self.photo setImageWithURL:[NSURL URLWithString:phot_url]
+               placeholderImage:[UIImage imageNamed:@"default_avatar.png"]];
 }
 
 

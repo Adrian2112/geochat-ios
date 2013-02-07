@@ -347,7 +347,7 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 # pragma mark SocketIODelegate
 
 - (void) socketIODidConnect:(SocketIO *)socket{
-    NSDictionary *request_messages = @{@"room": self.place_id, @"user": @"Adrian Gonzalez"};
+    NSDictionary *request_messages = @{@"room": self.place_id, @"access_token": GC_APP_DELEGATE().accessToken};
 
     [self.socketIO sendEvent:@"join room" withData:request_messages];
 }

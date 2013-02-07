@@ -108,6 +108,7 @@
     if (self.request) [self.request cancel];
     
     self.request = [self.foursquare requestWithPath:path HTTPMethod:method parameters:parameters delegate:self];
+    
     [self.request start];
 }
 

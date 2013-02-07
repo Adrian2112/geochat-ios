@@ -13,7 +13,6 @@
 //#define PORT 3000
 #define PORT 80
 
-
 #import <UIKit/UIKit.h>
 
 @class GCLoginViewController;
@@ -26,9 +25,12 @@
 
 @property (strong, nonatomic) GCLoginViewController *loginViewController;
 @property (strong, nonatomic) GCNavigationController *navigationController;
+@property (strong, nonatomic) NSString *accessToken;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) UIImageView *photo;
 
 -(void) saveAccessToken:(NSString *)token;
--(NSString *) readAccessToken;
+-(void) saveValue:(NSString *)value withKey:(NSString *)key;
 -(BZFoursquare *) getFoursquareClient;
 -(void) logout;
 

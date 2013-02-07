@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BZFoursquare.h"
 
-@interface GCLoginViewController : UIViewController <BZFoursquareSessionDelegate, BZFoursquareRequestDelegate>
+@interface GCLoginViewController : UIViewController <BZFoursquareSessionDelegate>
 
 @property(nonatomic,strong) BZFoursquare *foursquare_api;
 

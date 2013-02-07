@@ -8,6 +8,7 @@
 
 #import "GCLoginViewController.h"
 #import "GCAppDelegate.h"
+#import "AFJSONRequestOperation.h"
 
 @interface GCLoginViewController ()
 
@@ -43,16 +44,28 @@
 # pragma mark BZFoursquareSessionDelegate
 
 - (void)foursquareDidAuthorize:(BZFoursquare *)foursquare {
-    GCAppDelegate *appDelegate = GC_APP_DELEGATE();
-    
     // save access token for the next time
-    [appDelegate saveAccessToken:foursquare.accessToken];
+    [GC_APP_DELEGATE() saveAccessToken:foursquare.accessToken];
+    NSLog(@"%@", foursquare.accessToken);
     
-    // redirect to places viewcontroller
-    appDelegate.window.rootViewController = appDelegate.navigationController;
     
-    [self.view removeFromSuperview];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/register/%@", HOST, foursquare.accessToken]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+        NSLog(@"%@", (NSDictionary *)JSON);
+        
+        GCAppDelegate *appDelegate = GC_APP_DELEGATE();
+        
+        // redirect to places viewcontroller
+        appDelegate.window.rootViewController = appDelegate.navigationController;
     
+        [self.view removeFromSuperview];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
+        NSLog(@"Error registering user: %@", error);
+    }];
+    [operation start];
 }
 
 - (void)foursquareDidNotAuthorize:(BZFoursquare *)foursquare error:(NSDictionary *)errorInfo {

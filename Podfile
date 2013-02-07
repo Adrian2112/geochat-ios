@@ -1,3 +1,5 @@
-platform :ios
+platform :ios, '5.0'
 pod 'Foursquare-iOS-API', '~> 1.1.0'
 pod 'socket.IO', '~> 0.0.1'
+pod 'AFNetworking', '~> 1.1.0'
+pod 'SDWebImage', '~> 3.1.x'
