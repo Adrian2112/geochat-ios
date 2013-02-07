@@ -141,6 +141,9 @@
     NSLog(@"%f, %f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude);
     NSString *coordinates = [NSString stringWithFormat:@"%f,%f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude];
     
+    coordinates = @"25.644689,-100.285887";
+    
+    // TODO: delete, this is just for testing
     NSDictionary *parameters = @{@"ll" : coordinates}; //[NSDictionary dictionaryWithObjectsAndKeys:coordinates, @"ll", nil];
     
     [self foursquareRequestWithPath:@"venues/search" HTTPMethod:@"GET" parameters:parameters];

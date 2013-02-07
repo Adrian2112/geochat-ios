@@ -11,9 +11,11 @@
 @interface GCMessage : NSObject
 
 @property (strong, nonatomic) NSString *message;
-@property (strong, nonatomic) NSString *author;
+@property (strong, nonatomic) NSString *user;
 @property (strong, nonatomic) NSDate *created_at;
 
 -(id)initWithDictionary:(NSDictionary *)dictionary;
+-(id)initWithMessage:(NSString *)message user:(NSString *)user;
+-(NSDictionary *)toDictionary;
 
 @end

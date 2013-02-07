@@ -10,6 +10,8 @@
 #import "GCConversation.h"
 #import "GCMessage.h"
 #import "ACPlaceholderTextView.h"
+#import <socket.IO/SocketIO.h>
+#import "GCAppDelegate.h"
 
 #define kChatBarHeight4                      94
 #define CHAT_BAR_HEIGHT                      40
@@ -30,12 +32,13 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 [[NSNotificationCenter defaultCenter] removeObserver:self];
 
 
-@interface GCConversationViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
+@interface GCConversationViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, SocketIODelegate>
 
 @property (strong, nonatomic) GCConversation *conversation;
 @property (strong, nonatomic) UIButton *sendButton;
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) ACPlaceholderTextView *textView;
+@property (strong, nonatomic) SocketIO *socketIO;
 
 @end
 
@@ -48,6 +51,7 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 @synthesize sendButton = _sendButton;
 @synthesize tableView = _tableView;
 @synthesize textView = _textView;
+@synthesize socketIO = _socketIO;
 
 - (void)viewDidLoad
 {
@@ -109,7 +113,7 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     _sendButton.titleLabel.shadowOffset = CGSizeMake(0.0, -1.0);
     [_sendButton setTitle:NSLocalizedString(@"Send", nil) forState:UIControlStateNormal];
     [_sendButton setTitleShadowColor:[UIColor colorWithRed:0.325f green:0.463f blue:0.675f alpha:1] forState:UIControlStateNormal];
-//    [_sendButton addTarget:self action:@selector(sendMessage) forControlEvents:UIControlEventTouchUpInside];
+    [_sendButton addTarget:self action:@selector(sendMessage) forControlEvents:UIControlEventTouchUpInside];
     [messageInputBar addSubview:_sendButton];
     
     [self.view addSubview:messageInputBar];
@@ -122,7 +126,19 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
         _sendButton.enabled = NO;
         _sendButton.titleLabel.alpha = 0.5f; // Sam S. says 0.4f
     }
-
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(willEnterForeground:)
+                                                 name: @"willEnterForeground"
+                                               object: nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(didEnterBackground:)
+                                                 name: @"didEnterBackground"
+                                               object: nil];
+    
+    [self reconect];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -144,6 +160,8 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 
 - (void)viewWillDisappear:(BOOL)animated {
     UIKeyboardNotificationsUnobserve(); // as soon as possible
+    
+    [self disconnect];
     [super viewWillDisappear:animated];
 }
 
@@ -188,6 +206,18 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 - (void)sendMessage {
     
     // Send message.
+    GCMessage *message = [[GCMessage alloc] initWithMessage:self.textView.text user:@"Adrian Gonzalez"];
+    
+    [self addMessageToConversation:message];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:[message toDictionary]];
+    
+    [params setObject:self.place_id forKey:@"place_id"];
+    
+    [self.socketIO sendEvent:@"new message" withData:params];
+
+    [self scrollToBottomAnimated:YES];
+    
 //    ACMessage *message = [NSEntityDescription insertNewObjectForEntityForName:@"ACMessage" inManagedObjectContext:_managedObjectContext];
 //    _conversation.lastMessageSentDate = message.sentDate = [NSDate date];
 //    _conversation.lastMessageText = message.text = _textView.text;
@@ -230,13 +260,6 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
 }
 
 #pragma mark UITextViewDelegate
@@ -277,5 +300,78 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
         _sendButton.titleLabel.alpha = 0.5f; // Sam S. says 0.4f
     }
 }
+
+# pragma mark - AppDelegate Notifications
+
+-(void) willEnterForeground:(NSNotification *)notification{
+    // TODO - reconnect when app reopens
+    // it crashes if call [self reconect]
+}
+
+-(void) didEnterBackground:(NSNotification *)notification{
+    [self disconnect];
+}
+
+-(void) disconnect{
+    NSLog(@"self disconnect");
+    [self.socketIO disconnect];
+}
+
+-(void) reconect{
+    NSLog(@"reconnect");
+    
+    self.socketIO = [[SocketIO alloc] initWithDelegate:self];
+    
+    // Connect to place_id namespace
+    [self.socketIO connectToHost:HOST onPort:PORT];
+}
+
+# pragma mark SocketIODelegate
+
+- (void) socketIODidConnect:(SocketIO *)socket{
+    NSDictionary *request_messages = @{@"room": self.place_id, @"user": @"Adrian Gonzalez"};
+
+    [self.socketIO sendEvent:@"join room" withData:request_messages];
+}
+
+- (void) socketIODidDisconnect:(SocketIO *)socket disconnectedWithError:(NSError *)error{
+    NSLog(@"%@", error);
+//    _webSocket.delegate = nil;
+//    _webSocket = nil;
+//    _messagesSending = nil;
+}
+
+- (void) socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet{
+    
+    NSDictionary *json = [packet dataAsJSON];
+    NSLog(@"%@", json);
+    
+    NSString *message_type = json[@"name"];
+    
+    if ([message_type isEqualToString:@"new message"]) {
+        NSDictionary *json_message = json[@"args"][0][@"messages"][0];
+        NSLog(@"messages: %@", json_message);
+        
+        GCMessage *message = [[GCMessage alloc] initWithDictionary:json_message];
+        
+        [self addMessageToConversation:message];
+    } else if ([message_type isEqualToString:@"init messages"]) {
+        NSArray *json_messages = json[@"args"][0][@"messages"];
+        NSLog(@"messages: %@", json_messages);
+        
+        [self.conversation initializeMessagesWithMessagesArray:json_messages];
+        [self.tableView reloadData];
+        [self scrollToBottomAnimated:NO];
+        
+    }
+}
+
+
+-(void) addMessageToConversation:(GCMessage *)message{
+    [self.conversation addMessage:message];
+    [self.tableView reloadData];
+    [self scrollToBottomAnimated:YES];
+}
+
 
 @end

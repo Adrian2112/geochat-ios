@@ -18,74 +18,73 @@
     self = [super init];
     
     if (self) {
-        [self initializeMessages];
     }
     return self;
 }
 
--(void) initializeMessages{
-    NSString *date = @"2011-01-21T12:26:47-05:00";
-    
-    
-    date = [date stringByReplacingOccurrencesOfString:@":"
-                                                 withString:@""
-                                                    options:0
-                                                      range:NSMakeRange([date length] - 5,5)];
-    
-    
-    NSArray *messages = @[
-                         @{
-                             @"author" : @"Adrian",
-                             @"message" : @"Hola que hace?",
-                             @"created_at" : date
-                         },
-                         @{
-                             @"author" : @"Adrian",
-                             @"message" : @"ola kiubo",
-                             @"created_at" : date
-                         },
-                         @{
-                             @"author" : @"Adrian",
-                             @"message" : @"Hola que no hace?",
-                             @"created_at" : date
-                         },
-                         @{
-                             @"author" : @"Adrian",
-                             @"message" : @"Hola que hace?",
-                             @"created_at" : date
-                         },
-                         @{
-                             @"author" : @"Adrian",
-                             @"message" : @"ola kiubo",
-                             @"created_at" : date
-                         },
-                         @{
-                             @"author" : @"Adrian",
-                             @"message" : @"Hola que no hace?",
-                             @"created_at" : date
-                         },
-                         @{
-                             @"author" : @"Adrian",
-                             @"message" : @"Hola que hace?",
-                             @"created_at" : date
-                         },
-                         @{
-                             @"author" : @"Adrian",
-                             @"message" : @"ola kiubo",
-                             @"created_at" : date
-                         },
-                         @{
-                             @"author" : @"Adrian",
-                             @"message" : @"Hola que no hace?",
-                             @"created_at" : date
-                         },
-                         @{
-                             @"author" : @"Adrian",
-                             @"message" : @"Ultimo!!!",
-                             @"created_at" : date
-                         },
-                         ];
-    
+-(void) initializeMessagesWithMessagesArray:(NSArray *)messages{
+//    NSString *date = @"2011-01-21T12:26:47-05:00";
+//    
+//    
+//    date = [date stringByReplacingOccurrencesOfString:@":"
+//                                                 withString:@""
+//                                                    options:0
+//                                                      range:NSMakeRange([date length] - 5,5)];
+//    
+//    
+//    NSArray *messages = @[
+//                         @{
+//                             @"user" : @"Adrian",
+//                             @"message" : @"Hola que hace?",
+//                             @"created_at" : date
+//                         },
+//                         @{
+//                             @"user" : @"Adrian",
+//                             @"message" : @"ola kiubo",
+//                             @"created_at" : date
+//                         },
+//                         @{
+//                             @"user" : @"Adrian",
+//                             @"message" : @"Hola que no hace?",
+//                             @"created_at" : date
+//                         },
+//                         @{
+//                             @"user" : @"Adrian",
+//                             @"message" : @"Hola que hace?",
+//                             @"created_at" : date
+//                         },
+//                         @{
+//                             @"user" : @"Adrian",
+//                             @"message" : @"ola kiubo",
+//                             @"created_at" : date
+//                         },
+//                         @{
+//                             @"user" : @"Adrian",
+//                             @"message" : @"Hola que no hace?",
+//                             @"created_at" : date
+//                         },
+//                         @{
+//                             @"user" : @"Adrian",
+//                             @"message" : @"Hola que hace?",
+//                             @"created_at" : date
+//                         },
+//                         @{
+//                             @"user" : @"Adrian",
+//                             @"message" : @"ola kiubo",
+//                             @"created_at" : date
+//                         },
+//                         @{
+//                             @"user" : @"Adrian",
+//                             @"message" : @"Hola que no hace?",
+//                             @"created_at" : date
+//                         },
+//                         @{
+//                             @"user" : @"Adrian",
+//                             @"message" : @"Ultimo!!!",
+//                             @"created_at" : date
+//                         },
+//                         ];
+//    
     NSMutableArray *messages_objs = [NSMutableArray array];
     
     for (NSDictionary *message in messages) {
@@ -95,5 +94,8 @@
     self.messages = messages_objs;
 }
 
+-(void)addMessage:(GCMessage *)message{
+    [self.messages addObject:message];
+}
 
 @end

@@ -11,6 +11,7 @@
 #import "GCLoginViewController.h"
 #import "GCNavigationController.h"
 #import "GCPlacesViewController.h"
+#import "GCConversationViewController.h"
 #import "BZFoursquare.h"
 
 @interface GCAppDelegate()
@@ -43,7 +44,18 @@
     return YES;
 }
 
-# pragma mark
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName: @"willEnterForeground"
+                                                        object: nil
+                                                      userInfo: nil];
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    [[NSNotificationCenter defaultCenter] postNotificationName: @"didEnterBackground"
+                                                        object: nil
+                                                      userInfo: nil];
+}
 
 # pragma mark application opened with urlscheme
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {

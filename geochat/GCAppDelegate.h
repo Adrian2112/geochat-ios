@@ -7,6 +7,13 @@
 //
 #define GC_APP_DELEGATE() ((GCAppDelegate *)[[UIApplication sharedApplication] delegate])
 
+#define HOST @"geochatios.jit.su"
+//#define HOST @"localhost"
+
+//#define PORT 3000
+#define PORT 80
+
+
 #import <UIKit/UIKit.h>
 
 @class GCLoginViewController;

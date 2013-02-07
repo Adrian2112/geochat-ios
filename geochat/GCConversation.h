@@ -8,11 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+@class GCMessage;
+
 @interface GCConversation : NSObject
 
-@property (strong, nonatomic) NSArray *messages;
+@property (strong, nonatomic) NSMutableArray *messages;
 @property (strong, nonatomic) NSString *draft;
 
 -(id)initWithPlaceId:(NSString *)place_id;
+-(void)addMessage:(GCMessage *)message;
+-(void) initializeMessagesWithMessagesArray:(NSArray *)messages;
 
 @end
