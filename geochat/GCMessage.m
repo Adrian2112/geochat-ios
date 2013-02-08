@@ -13,6 +13,7 @@
 @synthesize message = _message;
 @synthesize user = _user;
 @synthesize created_at = _created_at;
+@synthesize photoURL = _photoURL;
 
 -(id)initWithDictionary:(NSDictionary *)dictionary{
     self = [super init];
@@ -21,24 +22,26 @@
         self.message = dictionary[@"message"];
         self.user = dictionary[@"user"];
         self.created_at = [self dateFromString:dictionary[@"created_at"]];
+        self.photoURL = dictionary[@"photo"];
     }
     return self;
 }
 
--(id)initWithMessage:(NSString *)message user:(NSString *)user{
+-(id)initWithMessage:(NSString *)message user:(NSString *)user photoURL:(NSString *)photoURL{
     self = [super init];
     
     if (self) {
         self.message = message;
         self.user = user;
         self.created_at = [NSDate date];
+        self.photoURL = photoURL;
     }
     return self;
     
 }
 
 -(NSDictionary *)toDictionary{
-    return @{@"user": self.user, @"message": self.message };
+    return @{ @"message": self.message };
 }
 
 -(NSDate *)dateFromString:(NSString *)date{

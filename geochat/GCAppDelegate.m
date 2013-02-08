@@ -36,6 +36,8 @@
     
     [self initializeVariables];
     
+    NSLog(@"%@ %@ %@", self.accessToken, self.name, self.photo);
+    
     if (self.accessToken) {
         self.window.rootViewController = self.navigationController;
     } else {
@@ -61,7 +63,7 @@
 }
 
 -(void)logout{
-    [self saveAccessToken:@""];
+    [self saveValue:@"" withKey:@"accessToken"];
     
     self.loginViewController = [[GCLoginViewController alloc] initWithNibName:@"GCLoginViewController" bundle:nil];
 
@@ -79,11 +81,6 @@
 
 # pragma mark store and read data from data.plist
 
-- (void) saveAccessToken:(NSString *)accessToken{
-    [self saveValue:accessToken withKey:@"acessToken"];
-    self.accessToken = accessToken;
-}
-
 -(void) saveValue:(NSString *)value withKey:(NSString *)key{
     NSString *path = [self getPathForDataStorage];
     
@@ -95,8 +92,7 @@
     if ([key isEqualToString:@"accessToken"]) {
         self.accessToken = value;
     } else if ([key isEqualToString:@"photo"]) {
-        [self.photo setImageWithURL:[NSURL URLWithString:value]
-                                       placeholderImage:[UIImage imageNamed:@"default_avatar.png"]];
+        self.photo = value;
     } else if ([key isEqualToString:@"name"]){
         self.name = value;
     }
@@ -115,10 +111,11 @@
     }
     
     self.name = [savedStock objectForKey:@"name"];
-    NSString *phot_url = [savedStock objectForKey:@"photo"];
     
-    [self.photo setImageWithURL:[NSURL URLWithString:phot_url]
-               placeholderImage:[UIImage imageNamed:@"default_avatar.png"]];
+    NSString *phot_url = [savedStock objectForKey:@"photo"];
+    NSLog(@"%@", phot_url);
+    
+    self.photo = [savedStock objectForKey:@"photo"];
 }
 
 

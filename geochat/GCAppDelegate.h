@@ -27,9 +27,8 @@
 @property (strong, nonatomic) GCNavigationController *navigationController;
 @property (strong, nonatomic) NSString *accessToken;
 @property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) UIImageView *photo;
+@property (strong, nonatomic) NSString *photo;
 
--(void) saveAccessToken:(NSString *)token;
 -(void) saveValue:(NSString *)value withKey:(NSString *)key;
 -(BZFoursquare *) getFoursquareClient;
 -(void) logout;

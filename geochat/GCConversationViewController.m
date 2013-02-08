@@ -13,6 +13,7 @@
 #import <socket.IO/SocketIO.h>
 #import "GCAppDelegate.h"
 #import "GCMessageCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 #define kChatBarHeight4                      94
 #define CHAT_BAR_HEIGHT                      40
@@ -207,7 +208,7 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 - (void)sendMessage {
     
     // Send message.
-    GCMessage *message = [[GCMessage alloc] initWithMessage:self.textView.text user:@"Adrian Gonzalez"];
+    GCMessage *message = [[GCMessage alloc] initWithMessage:self.textView.text user:GC_APP_DELEGATE().name photoURL:GC_APP_DELEGATE().photo];
     
     [self addMessageToConversation:message];
     
@@ -258,6 +259,11 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     cell.message.text = message.message;
     cell.date.text = [message createdAtString];
     cell.user.text = message.user;
+    NSURL *photo_url = [NSURL URLWithString: message.photoURL ];
+
+    [cell.photo setImageWithURL: photo_url
+                   placeholderImage:[UIImage imageNamed:@"default_avatar.gif"]];
+
     
     return cell;
 }

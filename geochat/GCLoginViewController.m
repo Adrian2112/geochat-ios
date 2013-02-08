@@ -45,7 +45,7 @@
 
 - (void)foursquareDidAuthorize:(BZFoursquare *)foursquare {
     // save access token for the next time
-    [GC_APP_DELEGATE() saveAccessToken:foursquare.accessToken];
+    [GC_APP_DELEGATE() saveValue:foursquare.accessToken withKey:@"accessToken"];
     NSLog(@"%@", foursquare.accessToken);
     
     
@@ -54,9 +54,12 @@
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         
+        GCAppDelegate *appDelegate = GC_APP_DELEGATE();
+        
+        [appDelegate saveValue:JSON[@"name"] withKey:@"name"];
+        [appDelegate saveValue:JSON[@"photo"] withKey:@"photo"];
         NSLog(@"%@", (NSDictionary *)JSON);
         
-        GCAppDelegate *appDelegate = GC_APP_DELEGATE();
         
         // redirect to places viewcontroller
         appDelegate.window.rootViewController = appDelegate.navigationController;

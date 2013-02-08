@@ -13,9 +13,10 @@
 @property (strong, nonatomic) NSString *message;
 @property (strong, nonatomic) NSString *user;
 @property (strong, nonatomic) NSDate *created_at;
+@property (strong, nonatomic) NSString *photoURL;
 
 -(id)initWithDictionary:(NSDictionary *)dictionary;
--(id)initWithMessage:(NSString *)message user:(NSString *)user;
+-(id)initWithMessage:(NSString *)message user:(NSString *)user photoURL:(NSString *)photoURL;
 -(NSDictionary *)toDictionary;
 -(NSString *)createdAtString;
 
