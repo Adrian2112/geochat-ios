@@ -18,14 +18,19 @@
 
 -(void) awakeFromNib{
     self.photo.image = [UIImage imageNamed:@"default_avatar.png"];
+    
 }
 
 -(void) layoutSubviews{
     [super layoutSubviews];
     
-    self.message.font = [UIFont systemFontOfSize:14.0f];
-    self.date.font = [UIFont systemFontOfSize:11.0f];
-    self.user.font = [UIFont boldSystemFontOfSize:11.0f];
+    [NUIRenderer renderLabel:self.message];
+    [NUIRenderer renderLabel:self.date];
+    [NUIRenderer renderLabel:self.user];
+    
+    self.message.font = [UIFont fontWithName:self.message.font.fontName size:14.0f];
+    self.date.font = [UIFont fontWithName:self.date.font.fontName size:11.0f];
+    self.user.font = [UIFont fontWithName:self.user.font.fontName size:11.0f];
     
 }
 
@@ -34,7 +39,7 @@
     CGSize size = [self.message.text sizeWithFont:self.message.font constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
     CGFloat height = size.height;
     
-    return height + self.date.frame.size.height + 16;
+    return height + self.date.frame.size.height + 18;
 }
 
 @end

@@ -29,7 +29,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-//    GCPlacesViewController *placesViewController = [[GCPlacesViewController alloc] initWithNibName:@"GCPlacesViewController" bundle:nil];
+    [NUIAppearance init];
     GCPlacesViewController *placesViewController = [[GCPlacesViewController alloc] init];
     
     self.navigationController = [[GCNavigationController alloc] initWithRootViewController:placesViewController];

@@ -12,6 +12,7 @@
 #import "BZFoursquare.h"
 #import <CoreLocation/CoreLocation.h>
 #import "GCConversationViewController.h"
+#import <NUI/UIBarButtonItem+NUI.h>
 
 @interface GCPlacesViewController () <BZFoursquareRequestDelegate, CLLocationManagerDelegate>
 
@@ -42,10 +43,11 @@
     
     [self.locationManager startUpdatingLocation];
     
-    self.title = @"Venues near you";
+    self.title = @"Near Venues";
     
     UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logout:)];
     self.navigationItem.rightBarButtonItem = logoutButton;
+    [NUIRenderer renderBarButtonItem:logoutButton];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

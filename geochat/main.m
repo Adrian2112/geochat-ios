@@ -13,6 +13,13 @@
 int main(int argc, char *argv[])
 {
     @autoreleasepool {
+        // Or use this call to use a specific stylesheet
+        [NUISettings initWithStylesheet:@"SkyBlue"];
+        
+        // If you uncomment this and set the path to your .nss file, you can modify your .nss
+        // file at runtime
+//        [NUISettings setAutoUpdatePath:@"/Users/adrian/Desktop/geochat/Resources/Blue.NUI"];
+        
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([GCAppDelegate class]));
     }
 }

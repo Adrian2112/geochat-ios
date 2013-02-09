@@ -20,6 +20,8 @@
 		3A78E03416C2369D0067FC2A /* SendButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A78E02C16C2369D0067FC2A /* SendButtonHighlighted.png */; };
 		3A78E03516C2369D0067FC2A /* SendButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A78E02D16C2369D0067FC2A /* SendButtonHighlighted@2x.png */; };
 		3A8C343016C42C1B00088A97 /* default_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C342F16C42C1B00088A97 /* default_avatar.png */; };
+		3AA1003316C5CACE00ACA768 /* Googolplex.nss in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1003216C5CACE00ACA768 /* Googolplex.nss */; };
+		3AA1003516C5CC1300ACA768 /* SkyBlue.nss in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1003416C5CC1300ACA768 /* SkyBlue.nss */; };
 		3AA1B6F216C1876E001EE4E8 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1B6F116C1876E001EE4E8 /* data.plist */; };
 		3AA1B73A16C1C070001EE4E8 /* GCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1B73916C1C06F001EE4E8 /* GCNavigationController.m */; };
 		3AA1B73E16C1C091001EE4E8 /* GCPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1B73C16C1C091001EE4E8 /* GCPlacesViewController.m */; };
@@ -57,6 +59,8 @@
 		3A78E02C16C2369D0067FC2A /* SendButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SendButtonHighlighted.png; sourceTree = "<group>"; };
 		3A78E02D16C2369D0067FC2A /* SendButtonHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SendButtonHighlighted@2x.png"; sourceTree = "<group>"; };
 		3A8C342F16C42C1B00088A97 /* default_avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_avatar.png; sourceTree = "<group>"; };
+		3AA1003216C5CACE00ACA768 /* Googolplex.nss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Googolplex.nss; sourceTree = "<group>"; };
+		3AA1003416C5CC1300ACA768 /* SkyBlue.nss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SkyBlue.nss; sourceTree = "<group>"; };
 		3AA1B6F116C1876E001EE4E8 /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = data.plist; path = geochat/data.plist; sourceTree = "<group>"; };
 		3AA1B73816C1C06F001EE4E8 /* GCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCNavigationController.h; sourceTree = "<group>"; };
 		3AA1B73916C1C06F001EE4E8 /* GCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCNavigationController.m; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				3A78E02616C2369D0067FC2A /* MessageInputBarBackground.png */,
+				3AA1003416C5CC1300ACA768 /* SkyBlue.nss */,
+				3AA1003216C5CACE00ACA768 /* Googolplex.nss */,
 				3A78E02716C2369D0067FC2A /* MessageInputBarBackground@2x.png */,
 				3A78E02816C2369D0067FC2A /* MessageInputFieldBackground.png */,
 				3A8C342F16C42C1B00088A97 /* default_avatar.png */,
@@ -289,6 +295,8 @@
 				3A78E03516C2369D0067FC2A /* SendButtonHighlighted@2x.png in Resources */,
 				3A03182416C37EEA00406308 /* GCMessageCell.xib in Resources */,
 				3A8C343016C42C1B00088A97 /* default_avatar.png in Resources */,
+				3AA1003316C5CACE00ACA768 /* Googolplex.nss in Resources */,
+				3AA1003516C5CC1300ACA768 /* SkyBlue.nss in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

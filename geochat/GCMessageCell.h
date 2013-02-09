@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UILabel+NUI.h"
 
 @interface GCMessageCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *photo;

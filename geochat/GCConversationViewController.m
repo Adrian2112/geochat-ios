@@ -11,9 +11,11 @@
 #import "GCMessage.h"
 #import "ACPlaceholderTextView.h"
 #import <socket.IO/SocketIO.h>
+#import <socket.IO/SocketIOPacket.h>
 #import "GCAppDelegate.h"
 #import "GCMessageCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <NUI/UIButton+NUI.h>
 
 #define kChatBarHeight4                      94
 #define CHAT_BAR_HEIGHT                      40
@@ -118,6 +120,8 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [_sendButton addTarget:self action:@selector(sendMessage) forControlEvents:UIControlEventTouchUpInside];
     [messageInputBar addSubview:_sendButton];
     
+    [NUIRenderer renderButton:self.sendButton];
+    
     [self.view addSubview:messageInputBar];
 
     if (_conversation.draft) {
@@ -140,7 +144,7 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
                                                  name: @"didEnterBackground"
                                                object: nil];
     
-    [self reconect];
+    [self reconnect];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -329,7 +333,8 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 
 -(void) willEnterForeground:(NSNotification *)notification{
     // TODO - reconnect when app reopens
-    // it crashes if call [self reconect]
+    // it crashes if call [self reconnect]
+    // [self reconnect];
 }
 
 -(void) didEnterBackground:(NSNotification *)notification{
@@ -341,9 +346,10 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [self.socketIO disconnect];
 }
 
--(void) reconect{
+-(void) reconnect{
     NSLog(@"reconnect");
     
+    self.socketIO = nil;
     self.socketIO = [[SocketIO alloc] initWithDelegate:self];
     
     // Connect to place_id namespace

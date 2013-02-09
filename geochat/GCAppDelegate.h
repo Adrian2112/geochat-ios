@@ -14,6 +14,7 @@
 #define PORT 80
 
 #import <UIKit/UIKit.h>
+#import "NUIAppearance.h"
 
 @class GCLoginViewController;
 @class GCNavigationController;
