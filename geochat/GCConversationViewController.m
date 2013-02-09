@@ -106,6 +106,7 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     
     // Create sendButton.
     self.sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.sendButton.nuiClass = @"none";
     _sendButton.frame = CGRectMake(messageInputBar.frame.size.width-65, 8, 59, 26);
     _sendButton.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin /* multiline input */ | UIViewAutoresizingFlexibleLeftMargin /* landscape */);
     UIEdgeInsets sendButtonEdgeInsets = UIEdgeInsetsMake(0, 13, 0, 13); // 27 x 27
@@ -120,7 +121,6 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [_sendButton addTarget:self action:@selector(sendMessage) forControlEvents:UIControlEventTouchUpInside];
     [messageInputBar addSubview:_sendButton];
     
-    [NUIRenderer renderButton:self.sendButton];
     
     [self.view addSubview:messageInputBar];
 
