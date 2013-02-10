@@ -127,6 +127,3 @@ LargeTextField {
     corner-radius: 9;
     padding: 13;
 }
-View {
-    background-color: @primaryBackgroundColor;
-}
