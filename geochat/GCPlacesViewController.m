@@ -13,6 +13,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "GCConversationViewController.h"
 #import <NUI/UIBarButtonItem+NUI.h>
+#import "NSString+FontAwesome.h"
 
 @interface GCPlacesViewController () <BZFoursquareRequestDelegate, CLLocationManagerDelegate>
 
@@ -49,11 +50,22 @@
     self.navigationItem.rightBarButtonItem = logoutButton;
     [NUIRenderer renderBarButtonItem:logoutButton];
     
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
+    
+    backButton.title = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-arrow-left"];
+
+    [backButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:kFontAwesomeFamilyName size:20.0], UITextAttributeFont,nil] forState:UIControlStateNormal];
+
+    
+    self.navigationItem.backBarButtonItem = backButton;
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    
 }
 
 -(void) logout:(UIButton *)button{

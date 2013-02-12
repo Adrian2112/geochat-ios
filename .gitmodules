@@ -4,3 +4,6 @@
 [submodule "Libraries/SocketRocket"]
 	path = Libraries/SocketRocket
 	url = https://github.com/square/SocketRocket.git
+[submodule "Libraries/ios-fontawesome"]
+	path = Libraries/ios-fontawesome
+	url = https://github.com/jmig/ios-fontawesome.git
