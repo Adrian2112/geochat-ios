@@ -36,7 +36,9 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 [[NSNotificationCenter defaultCenter] removeObserver:self];
 
 
-@interface GCConversationViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, SocketIODelegate>
+@interface GCConversationViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, SocketIODelegate> {
+    UIBackgroundTaskIdentifier socketClose;
+}
 
 @property (strong, nonatomic) GCConversation *conversation;
 @property (strong, nonatomic) UIButton *sendButton;
@@ -140,8 +142,8 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
                                                object: nil];
     
     [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(didEnterBackground:)
-                                                 name: @"didEnterBackground"
+                                             selector: @selector(willResignActive:)
+                                                 name: @"willResignActive"
                                                object: nil];
     
     [self reconnect];
@@ -332,17 +334,20 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 # pragma mark - AppDelegate Notifications
 
 -(void) willEnterForeground:(NSNotification *)notification{
-    // TODO - reconnect when app reopens
-    // it crashes if call [self reconnect]
-    // [self reconnect];
+    [self reconnect];
 }
 
--(void) didEnterBackground:(NSNotification *)notification{
+-(void) willResignActive:(NSNotification *)notification{
+    // Start long-running background task
+    UIBackgroundTaskIdentifier bti = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:NULL];
+
+    NSLog(@"resign");
     [self disconnect];
 }
 
 -(void) disconnect{
     NSLog(@"self disconnect");
+    socketClose = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];
     [self.socketIO disconnect];
 }
 
@@ -366,6 +371,7 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 
 - (void) socketIODidDisconnect:(SocketIO *)socket disconnectedWithError:(NSError *)error{
     NSLog(@"%@", error);
+    [[UIApplication sharedApplication] endBackgroundTask:socketClose];
 //    _webSocket.delegate = nil;
 //    _webSocket = nil;
 //    _messagesSending = nil;
@@ -374,20 +380,20 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 - (void) socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet{
     
     NSDictionary *json = [packet dataAsJSON];
-    NSLog(@"%@", json);
+//    NSLog(@"%@", json);
     
     NSString *message_type = json[@"name"];
     
     if ([message_type isEqualToString:@"new message"]) {
         NSDictionary *json_message = json[@"args"][0][@"messages"][0];
-        NSLog(@"messages: %@", json_message);
+//        NSLog(@"messages: %@", json_message);
         
         GCMessage *message = [[GCMessage alloc] initWithDictionary:json_message];
         
         [self addMessageToConversation:message];
     } else if ([message_type isEqualToString:@"init messages"]) {
         NSArray *json_messages = json[@"args"][0][@"messages"];
-        NSLog(@"messages: %@", json_messages);
+//        NSLog(@"messages: %@", json_messages);
         
         [self.conversation initializeMessagesWithMessagesArray:json_messages];
         [self.tableView reloadData];

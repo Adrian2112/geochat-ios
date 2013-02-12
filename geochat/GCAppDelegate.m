@@ -56,8 +56,8 @@
                                                       userInfo: nil];
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    [[NSNotificationCenter defaultCenter] postNotificationName: @"didEnterBackground"
+- (void)applicationWillResignActive:(UIApplication *)application {
+    [[NSNotificationCenter defaultCenter] postNotificationName: @"willResignActive"
                                                         object: nil
                                                       userInfo: nil];
 }
