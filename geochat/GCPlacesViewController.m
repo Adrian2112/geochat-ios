@@ -10,18 +10,17 @@
 #import <MapKit/MapKit.h>
 #import "GCPlacesViewController.h"
 #import "GCAppDelegate.h"
-#import "BZFoursquareRequest.h"
-#import "BZFoursquare.h"
 #import "GCConversationViewController.h"
 #import <NUI/UIBarButtonItem+NUI.h>
 #import "NSString+FontAwesome.h"
+#import "FAImageView.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "AFJSONRequestOperation.h"
 
-@interface GCPlacesViewController () <BZFoursquareRequestDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate> {
+@interface GCPlacesViewController () <CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate> {
     UITableViewController *_tableViewController;
 }
 
-@property (strong, nonatomic) BZFoursquareRequest *request;
-@property (strong, nonatomic) BZFoursquare *foursquare;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) NSArray *places;
 @property (strong, nonatomic) UITableView *placesTableView;
@@ -31,8 +30,6 @@
 
 @implementation GCPlacesViewController
 
-@synthesize request = _request;
-@synthesize foursquare = _foursquare;
 @synthesize locationManager = _locationManager;
 @synthesize places = _places;
 @synthesize placesTableView = _placesTableView;
@@ -51,10 +48,6 @@
     backButton.title = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-arrow-left"];
     [backButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:kFontAwesomeFamilyName size:20.0], UITextAttributeFont,nil] forState:UIControlStateNormal];
     self.navigationItem.backBarButtonItem = backButton;
-    
-    
-    GCAppDelegate *appDelegate = GC_APP_DELEGATE();
-    self.foursquare = [appDelegate getFoursquareClient];
     
     // initialize location manager
     self.locationManager = [[CLLocationManager alloc] init];
@@ -113,11 +106,34 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.text = self.places[indexPath.row][@"name"];
+    NSDictionary *place = self.places[indexPath.row];
+    
+    cell.textLabel.text = place[@"name"];
+    
+    cell.detailTextLabel.text = @"lol?";
+    
+    // right arrow
+    cell.accessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    UILabel *accessoryLabel = [[UILabel alloc] initWithFrame:cell.accessoryView.frame];
+    accessoryLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:20];
+    accessoryLabel.textColor = [UIColor grayColor];
+    accessoryLabel.text = [NSString stringWithFormat:@"%@", [NSString fontAwesomeIconStringForEnum:FAIconChevronRight]];
+    
+    [cell.accessoryView addSubview:accessoryLabel];
+    
+    // image
+    NSURL *photoURL = [NSURL URLWithString:place[@"image"]];
+
+    [cell.imageView setImageWithURL: photoURL placeholderImage:[UIImage imageNamed:@"default_avatar.png"]];
+    
     return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 50.0f;
 }
 
 #pragma mark - Table view delegate
@@ -137,30 +153,24 @@
     [self.navigationController pushViewController:conversationViewController animated:YES];
 }
 
-#pragma mark - FoursquareRequest Delegates
+# pragma mark - API call for places
 
-- (void) foursquareRequestWithPath:(NSString *)path HTTPMethod:(NSString *)method parameters:(NSDictionary *)parameters{
-    if (self.request) [self.request cancel];
+- (void) getPlacesFromAPIWithLatLng:(NSString *)latLng{
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/%@/venues/search/%@", FULL_HOST, GC_APP_DELEGATE().accessToken, latLng]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-    self.request = [self.foursquare requestWithPath:path HTTPMethod:method parameters:parameters delegate:self];
-    
-    [self.request start];
-}
-
-- (void)requestDidStartLoading:(BZFoursquareRequest *)request{
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-}
-
-- (void)requestDidFinishLoading:(BZFoursquareRequest *)request{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    self.places = request.response[@"venues"];
-    [self updateView];
-    [_tableViewController.refreshControl endRefreshing];
-}
-
-- (void)request:(BZFoursquareRequest *)request didFailWithError:(NSError *)error{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    NSLog(@"Foursquare request error: %@", error);
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        self.places = JSON;
+        [self updateView];
+        [_tableViewController.refreshControl endRefreshing];
+    } failure:^( NSURLRequest *request , NSHTTPURLResponse *response , NSError *error , id JSON ){
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        NSLog(@"%@", error);
+    }];
+    [operation start];
 }
 
 - (void)updateView {
@@ -184,16 +194,13 @@
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(currentLocation, 1000, 1000);
     MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
     point.coordinate = currentLocation;
-    point.title = @"Current Location";
     
     [self.map addAnnotation:point];
 
     [self.map setRegion:viewRegion animated:YES];
     
     NSString *coordinates = [NSString stringWithFormat:@"%f,%f", currentLocation.latitude, currentLocation.longitude];
-    NSDictionary *parameters = @{@"ll" : coordinates};
-    [self foursquareRequestWithPath:@"venues/search" HTTPMethod:@"GET" parameters:parameters];
-    
+    [self getPlacesFromAPIWithLatLng:coordinates];
     [self.locationManager stopUpdatingLocation];
 }
 
