@@ -16,6 +16,7 @@
 #import "FAImageView.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "AFJSONRequestOperation.h"
+#import "GCPlaceCell.h"
 
 @interface GCPlacesViewController () <CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate> {
     UITableViewController *_tableViewController;
@@ -103,37 +104,27 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
+    static NSString *CellIdentifier = @"GCPlaceCell";
     
+    GCPlaceCell *cell = (GCPlaceCell *)[self.placesTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"GCPlaceCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
+
     NSDictionary *place = self.places[indexPath.row];
     
-    cell.textLabel.text = place[@"name"];
-    
-    cell.detailTextLabel.text = @"lol?";
-    
-    // right arrow
-    cell.accessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    UILabel *accessoryLabel = [[UILabel alloc] initWithFrame:cell.accessoryView.frame];
-    accessoryLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:20];
-    accessoryLabel.textColor = [UIColor grayColor];
-    accessoryLabel.text = [NSString stringWithFormat:@"%@", [NSString fontAwesomeIconStringForEnum:FAIconChevronRight]];
-    
-    [cell.accessoryView addSubview:accessoryLabel];
+    cell.name.text = place[@"name"];
+    cell.distance = place[@"distance"];
+    cell.users = place[@"users_in"];
     
     // image
     NSURL *photoURL = [NSURL URLWithString:place[@"image"]];
 
-    [cell.imageView setImageWithURL: photoURL placeholderImage:[UIImage imageNamed:@"default_avatar.png"]];
+    [cell.image setImageWithURL: photoURL placeholderImage:[UIImage imageNamed:@"default_avatar.png"]];
     
     return cell;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 50.0f;
 }
 
 #pragma mark - Table view delegate
