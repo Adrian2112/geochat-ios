@@ -63,6 +63,8 @@
     self.map = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
     self.map.scrollEnabled = NO;
     self.map.zoomEnabled = NO;
+    self.map.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+
     [self.view addSubview:self.map];
     
     
