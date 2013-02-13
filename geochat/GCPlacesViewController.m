@@ -41,8 +41,14 @@
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     [self.locationManager setDesiredAccuracy:kCLLocationAccuracyThreeKilometers];
-    
     [self.locationManager startUpdatingLocation];
+    
+    UIRefreshControl *refControl = [[UIRefreshControl alloc] init];
+    
+    refControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"refresh"];
+    
+    [refControl addTarget:self action:@selector(placesRefresh) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refControl;
     
     self.title = @"Near Venues";
     
@@ -134,6 +140,7 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     self.places = request.response[@"venues"];
     [self updateView];
+    [self.refreshControl endRefreshing];
 }
 
 - (void)request:(BZFoursquareRequest *)request didFailWithError:(NSError *)error{
@@ -160,14 +167,26 @@
     NSLog(@"%f, %f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude);
     NSString *coordinates = [NSString stringWithFormat:@"%f,%f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude];
     
+    // TODO: delete, this is just for testing
     coordinates = @"25.644689,-100.285887";
     
-    // TODO: delete, this is just for testing
-    NSDictionary *parameters = @{@"ll" : coordinates}; //[NSDictionary dictionaryWithObjectsAndKeys:coordinates, @"ll", nil];
+    NSDictionary *parameters = @{@"ll" : coordinates}; 
     
     [self foursquareRequestWithPath:@"venues/search" HTTPMethod:@"GET" parameters:parameters];
     
     [self.locationManager stopUpdatingLocation];
+}
+
+# pragma mark - UIRefreshControl
+
+-(void)placesRefresh {
+    NSLog(@"refresh");
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMM d, h:mm a"];
+    NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@", [formatter stringFromDate:[NSDate date]]];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
+    
+    [self.locationManager startUpdatingLocation];
 }
 
 @end
