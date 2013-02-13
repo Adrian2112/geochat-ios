@@ -10,7 +10,6 @@
 #import "NSString+FontAwesome.h"
 
 @interface GCPlaceCell()
-@property (weak, nonatomic) IBOutlet UILabel *accessory;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *usersLabel;
 
@@ -22,16 +21,8 @@
 @synthesize distance = _distance;
 @synthesize users = _users;
 @synthesize image = _image;
-@synthesize accessory = _accessory;
 @synthesize usersLabel = _usersLabel;
 @synthesize distanceLabel = _distanceLabel;
-
--(void) awakeFromNib{
-    // right arrow
-    self.accessory.font = [UIFont fontWithName:kFontAwesomeFamilyName size:20];
-    self.accessory.textColor = [UIColor grayColor];
-    self.accessory.text = [NSString stringWithFormat:@"%@", [NSString fontAwesomeIconStringForEnum:FAIconChevronRight]];
-}
 
 -(void) layoutSubviews {
     [super layoutSubviews];
