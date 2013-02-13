@@ -26,6 +26,7 @@
 @property (strong, nonatomic) NSArray *places;
 @property (strong, nonatomic) UITableView *placesTableView;
 @property (strong, nonatomic) MKMapView *map;
+@property (strong, nonatomic) MKPointAnnotation *point;
 
 @end
 
@@ -34,6 +35,8 @@
 @synthesize locationManager = _locationManager;
 @synthesize places = _places;
 @synthesize placesTableView = _placesTableView;
+@synthesize map = _map;
+@synthesize point = _point;
 
 - (void)viewDidLoad
 {
@@ -59,6 +62,7 @@
     // initialize map
     self.map = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
     self.map.scrollEnabled = NO;
+    self.map.zoomEnabled = NO;
     [self.view addSubview:self.map];
     
     
@@ -183,10 +187,10 @@
     NSLog(@"%f, %f", currentLocation.latitude, currentLocation.longitude);
     
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(currentLocation, 1000, 1000);
-    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-    point.coordinate = currentLocation;
+    self.point = [[MKPointAnnotation alloc] init];
+    self.point.coordinate = currentLocation;
     
-    [self.map addAnnotation:point];
+    [self.map addAnnotation:self.point];
     
     [self.map setRegion:viewRegion animated:YES];
     
