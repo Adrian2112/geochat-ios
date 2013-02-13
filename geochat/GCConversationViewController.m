@@ -268,7 +268,7 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     NSURL *photo_url = [NSURL URLWithString: message.photoURL ];
 
     [cell.photo setImageWithURL: photo_url
-                   placeholderImage:[UIImage imageNamed:@"default_avatar.gif"]];
+                   placeholderImage:[UIImage imageNamed:@"default_avatar.png"]];
 
     
     return cell;

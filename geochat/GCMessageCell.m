@@ -18,7 +18,6 @@
 
 -(void) awakeFromNib{
     self.photo.image = [UIImage imageNamed:@"default_avatar.png"];
-    
 }
 
 -(void) layoutSubviews{

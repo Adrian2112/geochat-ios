@@ -20,7 +20,6 @@
 		3A78E03416C2369D0067FC2A /* SendButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A78E02C16C2369D0067FC2A /* SendButtonHighlighted.png */; };
 		3A78E03516C2369D0067FC2A /* SendButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A78E02D16C2369D0067FC2A /* SendButtonHighlighted@2x.png */; };
 		3A8C343016C42C1B00088A97 /* default_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C342F16C42C1B00088A97 /* default_avatar.png */; };
-		3AA1003316C5CACE00ACA768 /* Googolplex.nss in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1003216C5CACE00ACA768 /* Googolplex.nss */; };
 		3AA1003516C5CC1300ACA768 /* SkyBlue.nss in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1003416C5CC1300ACA768 /* SkyBlue.nss */; };
 		3AA1B6F216C1876E001EE4E8 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1B6F116C1876E001EE4E8 /* data.plist */; };
 		3AA1B73A16C1C070001EE4E8 /* GCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1B73916C1C06F001EE4E8 /* GCNavigationController.m */; };
@@ -37,6 +36,8 @@
 		3AC7574916CAD15C00C92790 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3AC7573716CAD15C00C92790 /* FontAwesome.ttf */; };
 		3AC7574A16CAD15C00C92790 /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7573916CAD15C00C92790 /* UIFont+FontAwesome.m */; };
 		3ACC8A6016CB1CD30086084B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACC8A5F16CB1CD30086084B /* MapKit.framework */; };
+		3ACC8A6316CB26CD0086084B /* GCPlaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC8A6216CB26CD0086084B /* GCPlaceCell.m */; };
+		3ACC8A6516CB26E10086084B /* GCPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ACC8A6416CB26E10086084B /* GCPlaceCell.xib */; };
 		3AF0C32C16C0DFDA009A3551 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF0C32B16C0DFDA009A3551 /* UIKit.framework */; };
 		3AF0C32E16C0DFDA009A3551 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF0C32D16C0DFDA009A3551 /* Foundation.framework */; };
 		3AF0C33016C0DFDB009A3551 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF0C32F16C0DFDA009A3551 /* CoreGraphics.framework */; };
@@ -67,7 +68,6 @@
 		3A78E02C16C2369D0067FC2A /* SendButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SendButtonHighlighted.png; sourceTree = "<group>"; };
 		3A78E02D16C2369D0067FC2A /* SendButtonHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SendButtonHighlighted@2x.png"; sourceTree = "<group>"; };
 		3A8C342F16C42C1B00088A97 /* default_avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_avatar.png; sourceTree = "<group>"; };
-		3AA1003216C5CACE00ACA768 /* Googolplex.nss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Googolplex.nss; sourceTree = "<group>"; };
 		3AA1003416C5CC1300ACA768 /* SkyBlue.nss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SkyBlue.nss; sourceTree = "<group>"; };
 		3AA1B6F116C1876E001EE4E8 /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = data.plist; path = geochat/data.plist; sourceTree = "<group>"; };
 		3AA1B73816C1C06F001EE4E8 /* GCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCNavigationController.h; sourceTree = "<group>"; };
@@ -92,6 +92,9 @@
 		3AC7573816CAD15C00C92790 /* UIFont+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+FontAwesome.h"; sourceTree = "<group>"; };
 		3AC7573916CAD15C00C92790 /* UIFont+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+FontAwesome.m"; sourceTree = "<group>"; };
 		3ACC8A5F16CB1CD30086084B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		3ACC8A6116CB26CD0086084B /* GCPlaceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPlaceCell.h; sourceTree = "<group>"; };
+		3ACC8A6216CB26CD0086084B /* GCPlaceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPlaceCell.m; sourceTree = "<group>"; };
+		3ACC8A6416CB26E10086084B /* GCPlaceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCPlaceCell.xib; sourceTree = "<group>"; };
 		3AF0C32816C0DFDA009A3551 /* geochat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = geochat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF0C32B16C0DFDA009A3551 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3AF0C32D16C0DFDA009A3551 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -135,7 +138,6 @@
 			children = (
 				3A78E02616C2369D0067FC2A /* MessageInputBarBackground.png */,
 				3AA1003416C5CC1300ACA768 /* SkyBlue.nss */,
-				3AA1003216C5CACE00ACA768 /* Googolplex.nss */,
 				3A78E02716C2369D0067FC2A /* MessageInputBarBackground@2x.png */,
 				3A78E02816C2369D0067FC2A /* MessageInputFieldBackground.png */,
 				3A8C342F16C42C1B00088A97 /* default_avatar.png */,
@@ -170,6 +172,9 @@
 				3A03182016C37ED100406308 /* GCMessageCell.h */,
 				3A03182116C37ED100406308 /* GCMessageCell.m */,
 				3A03182316C37EEA00406308 /* GCMessageCell.xib */,
+				3ACC8A6116CB26CD0086084B /* GCPlaceCell.h */,
+				3ACC8A6216CB26CD0086084B /* GCPlaceCell.m */,
+				3ACC8A6416CB26E10086084B /* GCPlaceCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -350,12 +355,12 @@
 				3A78E03516C2369D0067FC2A /* SendButtonHighlighted@2x.png in Resources */,
 				3A03182416C37EEA00406308 /* GCMessageCell.xib in Resources */,
 				3A8C343016C42C1B00088A97 /* default_avatar.png in Resources */,
-				3AA1003316C5CACE00ACA768 /* Googolplex.nss in Resources */,
 				3AA1003516C5CC1300ACA768 /* SkyBlue.nss in Resources */,
 				3AC7573A16CAD15C00C92790 /* .gitignore in Resources */,
 				3AC7573B16CAD15C00C92790 /* .gitmodules in Resources */,
 				3AC7574816CAD15C00C92790 /* README.md in Resources */,
 				3AC7574916CAD15C00C92790 /* FontAwesome.ttf in Resources */,
+				3ACC8A6516CB26E10086084B /* GCPlaceCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +401,7 @@
 				3AC7574616CAD15C00C92790 /* FAImageView.m in Sources */,
 				3AC7574716CAD15C00C92790 /* NSString+FontAwesome.m in Sources */,
 				3AC7574A16CAD15C00C92790 /* UIFont+FontAwesome.m in Sources */,
+				3ACC8A6316CB26CD0086084B /* GCPlaceCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
