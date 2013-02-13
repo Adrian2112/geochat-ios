@@ -8,7 +8,7 @@
 
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
-#import "GCPlacesViewController.h"
+#import "GCVenuesViewController.h"
 #import "GCAppDelegate.h"
 #import "GCConversationViewController.h"
 #import <NUI/UIBarButtonItem+NUI.h>
@@ -18,7 +18,7 @@
 #import "AFJSONRequestOperation.h"
 #import "GCPlaceCell.h"
 
-@interface GCPlacesViewController () <CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate> {
+@interface GCVenuesViewController () <CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate> {
     UITableViewController *_tableViewController;
 }
 
@@ -29,7 +29,7 @@
 
 @end
 
-@implementation GCPlacesViewController
+@implementation GCVenuesViewController
 
 @synthesize locationManager = _locationManager;
 @synthesize places = _places;
@@ -38,7 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     self.title = @"Near Venues";
     
     UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logout:)];
@@ -76,7 +76,7 @@
     
     int mapHeight = self.map.frame.size.height;
     self.placesTableView.frame = CGRectMake(0, mapHeight, _tableViewController.view.frame.size.width, _tableViewController.view.frame.size.height - mapHeight);
-
+    
     self.placesTableView.dataSource = self;
     self.placesTableView.delegate = self;
     [self.view addSubview:self.placesTableView];
@@ -112,7 +112,7 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"GCPlaceCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-
+    
     NSDictionary *place = self.places[indexPath.row];
     
     cell.name.text = place[@"name"];
@@ -121,7 +121,7 @@
     
     // image
     NSURL *photoURL = [NSURL URLWithString:place[@"image"]];
-
+    
     [cell.image setImageWithURL: photoURL placeholderImage:[UIImage imageNamed:@"default_avatar.png"]];
     
     return cell;
@@ -187,7 +187,7 @@
     point.coordinate = currentLocation;
     
     [self.map addAnnotation:point];
-
+    
     [self.map setRegion:viewRegion animated:YES];
     
     NSString *coordinates = [NSString stringWithFormat:@"%f,%f", currentLocation.latitude, currentLocation.longitude];

@@ -10,6 +10,7 @@
 		360DA3192B844750AF28EFA3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F3300638B741B1B4539FC4 /* libPods.a */; };
 		3A03182216C37ED100406308 /* GCMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A03182116C37ED100406308 /* GCMessageCell.m */; };
 		3A03182416C37EEA00406308 /* GCMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A03182316C37EEA00406308 /* GCMessageCell.xib */; };
+		3A3F61BC16CC23350033085E /* GCVenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3F61BB16CC23350033085E /* GCVenuesViewController.m */; };
 		3A78E02416C236850067FC2A /* ACPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A78E02316C236850067FC2A /* ACPlaceholderTextView.m */; };
 		3A78E02E16C2369D0067FC2A /* MessageInputBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A78E02616C2369D0067FC2A /* MessageInputBarBackground.png */; };
 		3A78E02F16C2369D0067FC2A /* MessageInputBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A78E02716C2369D0067FC2A /* MessageInputBarBackground@2x.png */; };
@@ -23,7 +24,6 @@
 		3AA1003516C5CC1300ACA768 /* SkyBlue.nss in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1003416C5CC1300ACA768 /* SkyBlue.nss */; };
 		3AA1B6F216C1876E001EE4E8 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1B6F116C1876E001EE4E8 /* data.plist */; };
 		3AA1B73A16C1C070001EE4E8 /* GCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1B73916C1C06F001EE4E8 /* GCNavigationController.m */; };
-		3AA1B73E16C1C091001EE4E8 /* GCPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1B73C16C1C091001EE4E8 /* GCPlacesViewController.m */; };
 		3AA1B74116C1E61C001EE4E8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA1B74016C1E61C001EE4E8 /* CoreLocation.framework */; };
 		3AA1B74816C1FEA5001EE4E8 /* GCConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1B74716C1FEA5001EE4E8 /* GCConversation.m */; };
 		3AA1B74B16C1FF88001EE4E8 /* GCMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1B74A16C1FF88001EE4E8 /* GCMessage.m */; };
@@ -57,6 +57,8 @@
 		3A03182016C37ED100406308 /* GCMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCMessageCell.h; sourceTree = "<group>"; };
 		3A03182116C37ED100406308 /* GCMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCMessageCell.m; sourceTree = "<group>"; };
 		3A03182316C37EEA00406308 /* GCMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCMessageCell.xib; sourceTree = "<group>"; };
+		3A3F61BA16CC23350033085E /* GCVenuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCVenuesViewController.h; sourceTree = "<group>"; };
+		3A3F61BB16CC23350033085E /* GCVenuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCVenuesViewController.m; sourceTree = "<group>"; };
 		3A78E02216C236850067FC2A /* ACPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACPlaceholderTextView.h; sourceTree = "<group>"; };
 		3A78E02316C236850067FC2A /* ACPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACPlaceholderTextView.m; sourceTree = "<group>"; };
 		3A78E02616C2369D0067FC2A /* MessageInputBarBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MessageInputBarBackground.png; sourceTree = "<group>"; };
@@ -72,8 +74,6 @@
 		3AA1B6F116C1876E001EE4E8 /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = data.plist; path = geochat/data.plist; sourceTree = "<group>"; };
 		3AA1B73816C1C06F001EE4E8 /* GCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCNavigationController.h; sourceTree = "<group>"; };
 		3AA1B73916C1C06F001EE4E8 /* GCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCNavigationController.m; sourceTree = "<group>"; };
-		3AA1B73B16C1C091001EE4E8 /* GCPlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPlacesViewController.h; sourceTree = "<group>"; };
-		3AA1B73C16C1C091001EE4E8 /* GCPlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPlacesViewController.m; sourceTree = "<group>"; };
 		3AA1B74016C1E61C001EE4E8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3AA1B74616C1FEA5001EE4E8 /* GCConversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCConversation.h; sourceTree = "<group>"; };
 		3AA1B74716C1FEA5001EE4E8 /* GCConversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCConversation.m; sourceTree = "<group>"; };
@@ -155,8 +155,8 @@
 			children = (
 				3AF0C34E16C0E05F009A3551 /* GCLoginViewController.h */,
 				3AF0C34F16C0E05F009A3551 /* GCLoginViewController.m */,
-				3AA1B73B16C1C091001EE4E8 /* GCPlacesViewController.h */,
-				3AA1B73C16C1C091001EE4E8 /* GCPlacesViewController.m */,
+				3A3F61BA16CC23350033085E /* GCVenuesViewController.h */,
+				3A3F61BB16CC23350033085E /* GCVenuesViewController.m */,
 				3AA1B74F16C20120001EE4E8 /* GCConversationViewController.h */,
 				3AA1B75016C20120001EE4E8 /* GCConversationViewController.m */,
 			);
@@ -392,7 +392,6 @@
 				3AF0C33C16C0DFDB009A3551 /* GCAppDelegate.m in Sources */,
 				3AF0C35116C0E05F009A3551 /* GCLoginViewController.m in Sources */,
 				3AA1B73A16C1C070001EE4E8 /* GCNavigationController.m in Sources */,
-				3AA1B73E16C1C091001EE4E8 /* GCPlacesViewController.m in Sources */,
 				3AA1B74816C1FEA5001EE4E8 /* GCConversation.m in Sources */,
 				3AA1B74B16C1FF88001EE4E8 /* GCMessage.m in Sources */,
 				3AA1B75116C20120001EE4E8 /* GCConversationViewController.m in Sources */,
@@ -402,6 +401,7 @@
 				3AC7574716CAD15C00C92790 /* NSString+FontAwesome.m in Sources */,
 				3AC7574A16CAD15C00C92790 /* UIFont+FontAwesome.m in Sources */,
 				3ACC8A6316CB26CD0086084B /* GCPlaceCell.m in Sources */,
+				3A3F61BC16CC23350033085E /* GCVenuesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

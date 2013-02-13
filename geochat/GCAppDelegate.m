@@ -10,7 +10,7 @@
 
 #import "GCLoginViewController.h"
 #import "GCNavigationController.h"
-#import "GCPlacesViewController.h"
+#import "GCVenuesViewController.h"
 #import "GCConversationViewController.h"
 #import "BZFoursquare.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -30,9 +30,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     [NUIAppearance init];
-    GCPlacesViewController *placesViewController = [[GCPlacesViewController alloc] init];
+    GCVenuesViewController *venuesViewController = [[GCVenuesViewController alloc] init];
     
-    self.navigationController = [[GCNavigationController alloc] initWithRootViewController:placesViewController];
+    self.navigationController = [[GCNavigationController alloc] initWithRootViewController:venuesViewController];
     
     [self initializeVariables];
     
