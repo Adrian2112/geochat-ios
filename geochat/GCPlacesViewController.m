@@ -15,12 +15,15 @@
 #import <NUI/UIBarButtonItem+NUI.h>
 #import "NSString+FontAwesome.h"
 
-@interface GCPlacesViewController () <BZFoursquareRequestDelegate, CLLocationManagerDelegate>
+@interface GCPlacesViewController () <BZFoursquareRequestDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate> {
+    UITableViewController *_tableViewController;
+}
 
 @property (strong, nonatomic) BZFoursquareRequest *request;
 @property (strong, nonatomic) BZFoursquare *foursquare;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) NSArray *places;
+@property (strong, nonatomic) UITableView *placesTableView;
 
 @end
 
@@ -30,6 +33,7 @@
 @synthesize foursquare = _foursquare;
 @synthesize locationManager = _locationManager;
 @synthesize places = _places;
+@synthesize placesTableView = _placesTableView;
 
 - (void)viewDidLoad
 {
@@ -43,13 +47,24 @@
     [self.locationManager setDesiredAccuracy:kCLLocationAccuracyThreeKilometers];
     [self.locationManager startUpdatingLocation];
     
-    UIRefreshControl *refControl = [[UIRefreshControl alloc] init];
+    // using table view controller inside so we can use the refreshControl attribute
+    _tableViewController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
+    [self addChildViewController:_tableViewController];
     
-    refControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"refresh"];
+    _tableViewController.refreshControl = [[UIRefreshControl alloc]init];
+    [_tableViewController.refreshControl addTarget:self action:@selector(placesRefresh) forControlEvents:UIControlEventValueChanged];
     
-    [refControl addTarget:self action:@selector(placesRefresh) forControlEvents:UIControlEventValueChanged];
-    self.refreshControl = refControl;
+    // hack: if not set to empty, the first time it puts the date it is not placed in the correct position
+    _tableViewController.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@""];
     
+    self.placesTableView = _tableViewController.tableView;
+    
+    self.placesTableView.frame = CGRectMake(0, 100, _tableViewController.view.frame.size.width, _tableViewController.view.frame.size.height - 100);
+
+    self.placesTableView.dataSource = self;
+    self.placesTableView.delegate = self;
+    [self.view addSubview:self.placesTableView];
+
     self.title = @"Near Venues";
     
     UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logout:)];
@@ -140,7 +155,7 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     self.places = request.response[@"venues"];
     [self updateView];
-    [self.refreshControl endRefreshing];
+    [_tableViewController.refreshControl endRefreshing];
 }
 
 - (void)request:(BZFoursquareRequest *)request didFailWithError:(NSError *)error{
@@ -150,10 +165,10 @@
 
 - (void)updateView {
     if ([self isViewLoaded]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        [self.tableView reloadData];
+        NSIndexPath *indexPath = [self.placesTableView indexPathForSelectedRow];
+        [self.placesTableView reloadData];
         if (indexPath) {
-            [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+            [self.placesTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
         }
     }
 }
@@ -184,7 +199,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MMM d, h:mm a"];
     NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@", [formatter stringFromDate:[NSDate date]]];
-    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
+    _tableViewController.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
     
     [self.locationManager startUpdatingLocation];
 }

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GCPlacesViewController : UITableViewController
+@interface GCPlacesViewController : UIViewController
 
 @end
