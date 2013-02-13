@@ -16,6 +16,7 @@
 #import "GCMessageCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <NUI/UIButton+NUI.h>
+#import "NSString+FontAwesome.h"
 
 #define kChatBarHeight4                      94
 #define CHAT_BAR_HEIGHT                      40
@@ -45,6 +46,7 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) ACPlaceholderTextView *textView;
 @property (strong, nonatomic) SocketIO *socketIO;
+@property (strong, nonatomic) UILabel *usersIn;
 
 @end
 
@@ -58,6 +60,7 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 @synthesize tableView = _tableView;
 @synthesize textView = _textView;
 @synthesize socketIO = _socketIO;
+@synthesize usersIn = _usersIn;
 
 - (void)viewDidLoad
 {
@@ -66,6 +69,8 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     self.title = self.place_name;
     
     self.conversation = [[GCConversation alloc] initWithPlaceId:self.place_id];
+    
+    [self setUsersInLabelWithNumber:@0];
     
     
     // taken from AcaniChat https://github.com/acani/AcaniChat
@@ -338,10 +343,6 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 }
 
 -(void) willResignActive:(NSNotification *)notification{
-    // Start long-running background task
-    UIBackgroundTaskIdentifier bti = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:NULL];
-
-    NSLog(@"resign");
     [self disconnect];
 }
 
@@ -372,33 +373,31 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 - (void) socketIODidDisconnect:(SocketIO *)socket disconnectedWithError:(NSError *)error{
     NSLog(@"%@", error);
     [[UIApplication sharedApplication] endBackgroundTask:socketClose];
-//    _webSocket.delegate = nil;
-//    _webSocket = nil;
-//    _messagesSending = nil;
 }
 
 - (void) socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet{
     
     NSDictionary *json = [packet dataAsJSON];
-//    NSLog(@"%@", json);
     
     NSString *message_type = json[@"name"];
+    json = json[@"args"][0];
     
     if ([message_type isEqualToString:@"new message"]) {
-        NSDictionary *json_message = json[@"args"][0][@"messages"][0];
-//        NSLog(@"messages: %@", json_message);
+        NSDictionary *json_message = json[@"messages"][0];
         
         GCMessage *message = [[GCMessage alloc] initWithDictionary:json_message];
         
         [self addMessageToConversation:message];
     } else if ([message_type isEqualToString:@"init messages"]) {
-        NSArray *json_messages = json[@"args"][0][@"messages"];
-//        NSLog(@"messages: %@", json_messages);
+        NSArray *json_messages = json[@"messages"];
         
         [self.conversation initializeMessagesWithMessagesArray:json_messages];
         [self.tableView reloadData];
         [self scrollToBottomAnimated:NO];
-        
+    } else if ([message_type isEqualToString:@"users count"]){
+        NSLog(@" count %@", json);
+        NSNumber *count = json[@"count"];
+        [self setUsersInLabelWithNumber:count];
     }
 }
 
@@ -407,6 +406,25 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [self.conversation addMessage:message];
     [self.tableView reloadData];
     [self scrollToBottomAnimated:YES];
+}
+
+#pragma mark - Users in label
+
+-(void) setUsersInLabelWithNumber:(NSNumber *)number{
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ %@", [NSString fontAwesomeIconStringForIconIdentifier: @"icon-group"], [number stringValue]]];
+    [attributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(1, [attributedString.string length] - 1)];
+    [attributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:kFontAwesomeFamilyName size:14] range:NSMakeRange(0, 1)];
+    
+    CGSize size = attributedString.size;
+    
+    self.usersIn= [[UILabel alloc] initWithFrame:CGRectMake(0, 0, size.width+20, size.height + 10)];
+    self.usersIn.attributedText = attributedString;
+    self.usersIn.textAlignment = NSTextAlignmentCenter;
+    self.usersIn.backgroundColor = [UIColor clearColor];
+    [NUIRenderer renderLabel:self.usersIn withClass:@"UsersIn"];
+    
+    UIBarButtonItem *usersInButton = [[UIBarButtonItem alloc] initWithCustomView:self.usersIn];
+    self.navigationItem.rightBarButtonItem = usersInButton;
 }
 
 

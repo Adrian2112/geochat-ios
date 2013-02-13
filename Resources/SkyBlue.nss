@@ -127,3 +127,15 @@ LargeTextField {
     corner-radius: 9;
     padding: 13;
 }
+
+UsersIn{
+    font-name: FontAwesome;
+    background-color-top: #11ABE1;
+    background-color-bottom: #01A0DA;
+    border-color: #0099D5;
+    border-width: 1;
+    corner-radius: 7;
+    font-color: #FFFFFF;
+    font-size: 13;
+    text-shadow-color: clear;
+}
