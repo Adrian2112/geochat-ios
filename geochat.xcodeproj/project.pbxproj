@@ -36,6 +36,7 @@
 		3AC7574816CAD15C00C92790 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3AC7573516CAD15C00C92790 /* README.md */; };
 		3AC7574916CAD15C00C92790 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3AC7573716CAD15C00C92790 /* FontAwesome.ttf */; };
 		3AC7574A16CAD15C00C92790 /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7573916CAD15C00C92790 /* UIFont+FontAwesome.m */; };
+		3ACC8A6016CB1CD30086084B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACC8A5F16CB1CD30086084B /* MapKit.framework */; };
 		3AF0C32C16C0DFDA009A3551 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF0C32B16C0DFDA009A3551 /* UIKit.framework */; };
 		3AF0C32E16C0DFDA009A3551 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF0C32D16C0DFDA009A3551 /* Foundation.framework */; };
 		3AF0C33016C0DFDB009A3551 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF0C32F16C0DFDA009A3551 /* CoreGraphics.framework */; };
@@ -90,6 +91,7 @@
 		3AC7573716CAD15C00C92790 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		3AC7573816CAD15C00C92790 /* UIFont+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+FontAwesome.h"; sourceTree = "<group>"; };
 		3AC7573916CAD15C00C92790 /* UIFont+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+FontAwesome.m"; sourceTree = "<group>"; };
+		3ACC8A5F16CB1CD30086084B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3AF0C32816C0DFDA009A3551 /* geochat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = geochat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF0C32B16C0DFDA009A3551 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3AF0C32D16C0DFDA009A3551 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -115,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ACC8A6016CB1CD30086084B /* MapKit.framework in Frameworks */,
 				3AA1B74116C1E61C001EE4E8 /* CoreLocation.framework in Frameworks */,
 				3AF0C35B16C0F453009A3551 /* MobileCoreServices.framework in Frameworks */,
 				3AF0C32C16C0DFDA009A3551 /* UIKit.framework in Frameworks */,
@@ -218,6 +221,7 @@
 		3AF0C31F16C0DFDA009A3551 = {
 			isa = PBXGroup;
 			children = (
+				3ACC8A5F16CB1CD30086084B /* MapKit.framework */,
 				3AA1B74016C1E61C001EE4E8 /* CoreLocation.framework */,
 				3AF0C33116C0DFDB009A3551 /* geochat */,
 				3AF0C32A16C0DFDA009A3551 /* Frameworks */,

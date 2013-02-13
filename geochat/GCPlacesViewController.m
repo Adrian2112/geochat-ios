@@ -6,11 +6,12 @@
 //  Copyright (c) 2013 Adrian Gzz. All rights reserved.
 //
 
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 #import "GCPlacesViewController.h"
 #import "GCAppDelegate.h"
 #import "BZFoursquareRequest.h"
 #import "BZFoursquare.h"
-#import <CoreLocation/CoreLocation.h>
 #import "GCConversationViewController.h"
 #import <NUI/UIBarButtonItem+NUI.h>
 #import "NSString+FontAwesome.h"
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) NSArray *places;
 @property (strong, nonatomic) UITableView *placesTableView;
+@property (strong, nonatomic) MKMapView *map;
 
 @end
 
@@ -39,13 +41,32 @@
 {
     [super viewDidLoad];
 
+    self.title = @"Near Venues";
+    
+    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logout:)];
+    self.navigationItem.rightBarButtonItem = logoutButton;
+    [NUIRenderer renderBarButtonItem:logoutButton];
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
+    backButton.title = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-arrow-left"];
+    [backButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:kFontAwesomeFamilyName size:20.0], UITextAttributeFont,nil] forState:UIControlStateNormal];
+    self.navigationItem.backBarButtonItem = backButton;
+    
+    
     GCAppDelegate *appDelegate = GC_APP_DELEGATE();
     self.foursquare = [appDelegate getFoursquareClient];
     
+    // initialize location manager
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     [self.locationManager setDesiredAccuracy:kCLLocationAccuracyThreeKilometers];
     [self.locationManager startUpdatingLocation];
+    
+    // initialize map
+    self.map = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
+    self.map.scrollEnabled = NO;
+    [self.view addSubview:self.map];
+    
     
     // using table view controller inside so we can use the refreshControl attribute
     _tableViewController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
@@ -59,33 +80,12 @@
     
     self.placesTableView = _tableViewController.tableView;
     
-    self.placesTableView.frame = CGRectMake(0, 100, _tableViewController.view.frame.size.width, _tableViewController.view.frame.size.height - 100);
+    int mapHeight = self.map.frame.size.height;
+    self.placesTableView.frame = CGRectMake(0, mapHeight, _tableViewController.view.frame.size.width, _tableViewController.view.frame.size.height - mapHeight);
 
     self.placesTableView.dataSource = self;
     self.placesTableView.delegate = self;
     [self.view addSubview:self.placesTableView];
-
-    self.title = @"Near Venues";
-    
-    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logout:)];
-    self.navigationItem.rightBarButtonItem = logoutButton;
-    [NUIRenderer renderBarButtonItem:logoutButton];
-    
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
-    
-    backButton.title = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-arrow-left"];
-
-    [backButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:kFontAwesomeFamilyName size:20.0], UITextAttributeFont,nil] forState:UIControlStateNormal];
-
-    
-    self.navigationItem.backBarButtonItem = backButton;
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     
 }
 
@@ -175,18 +175,23 @@
 
 #pragma mark - CLLocationManager Delegate
 
-- (void)locationManager:(CLLocationManager *)manager
-     didUpdateLocations:(NSArray *)location{
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)location{
     
-    CLLocation *lastLocation = [location lastObject];
-    NSLog(@"%f, %f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude);
-    NSString *coordinates = [NSString stringWithFormat:@"%f,%f", lastLocation.coordinate.latitude, lastLocation.coordinate.longitude];
+    CLLocationCoordinate2D currentLocation = ((CLLocation *)[location lastObject]).coordinate;
     
-    // TODO: delete, this is just for testing
-    coordinates = @"25.644689,-100.285887";
+    NSLog(@"%f, %f", currentLocation.latitude, currentLocation.longitude);
     
-    NSDictionary *parameters = @{@"ll" : coordinates}; 
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(currentLocation, 1000, 1000);
+    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+    point.coordinate = currentLocation;
+    point.title = @"Current Location";
     
+    [self.map addAnnotation:point];
+
+    [self.map setRegion:viewRegion animated:YES];
+    
+    NSString *coordinates = [NSString stringWithFormat:@"%f,%f", currentLocation.latitude, currentLocation.longitude];
+    NSDictionary *parameters = @{@"ll" : coordinates};
     [self foursquareRequestWithPath:@"venues/search" HTTPMethod:@"GET" parameters:parameters];
     
     [self.locationManager stopUpdatingLocation];
