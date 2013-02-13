@@ -7,11 +7,19 @@
 //
 #define GC_APP_DELEGATE() ((GCAppDelegate *)[[UIApplication sharedApplication] delegate])
 
-#define HOST @"geochatios.jit.su"
-//#define HOST @"localhost"
+#define TEST 1
 
-//#define PORT 3000
+# if TEST == 1
+#define HOST @"localhost"
+#define PORT 3000
+#define FULL_HOST @"localhost:3000"
+
+# else
+#define HOST @"geochatios.jit.su"
 #define PORT 80
+#define FULL_HOST @"geochatios.jit.su"
+
+# endif
 
 #import <UIKit/UIKit.h>
 #import "NUIAppearance.h"

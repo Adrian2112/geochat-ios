@@ -49,7 +49,7 @@
     NSLog(@"%@", foursquare.accessToken);
     
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/register/%@", HOST, foursquare.accessToken]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/register/%@", FULL_HOST, foursquare.accessToken]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
