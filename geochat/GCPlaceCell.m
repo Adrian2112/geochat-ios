@@ -12,6 +12,7 @@
 @interface GCPlaceCell()
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *usersLabel;
+@property (weak, nonatomic) IBOutlet UIView *backgroundView;
 
 @end
 
@@ -23,9 +24,11 @@
 @synthesize image = _image;
 @synthesize usersLabel = _usersLabel;
 @synthesize distanceLabel = _distanceLabel;
+@synthesize backgroundView = _backgroundView_;
 
 -(void) layoutSubviews {
     [super layoutSubviews];
+    self.nuiClass = @"PlaceCell";
 }
 
 -(void) setUsers:(NSNumber *)users{

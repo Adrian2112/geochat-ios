@@ -83,6 +83,7 @@
     int mapHeight = self.map.frame.size.height;
     self.placesTableView.frame = CGRectMake(0, mapHeight, _tableViewController.view.frame.size.width, _tableViewController.view.frame.size.height - mapHeight);
     
+    self.placesTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.placesTableView.dataSource = self;
     self.placesTableView.delegate = self;
     [self.view addSubview:self.placesTableView];
@@ -131,6 +132,10 @@
     [cell.image setImageWithURL: photoURL placeholderImage:[UIImage imageNamed:@"default_avatar.png"]];
     
     return cell;
+}
+
+- (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 74;
 }
 
 #pragma mark - Table view delegate

@@ -139,3 +139,7 @@ UsersIn{
     font-size: 13;
     text-shadow-color: clear;
 }
+
+PlaceCell{
+    background-color: #D7D7D7;
+}
