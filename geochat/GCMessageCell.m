@@ -23,6 +23,9 @@
 -(void) layoutSubviews{
     [super layoutSubviews];
     
+    self.nuiClass = @"none";
+    self.backgroundColor = [UIColor colorWithRed:215/255.0f green:215/255.0f blue:215/255.0f alpha:1.0f];
+
     [NUIRenderer renderLabel:self.message];
     [NUIRenderer renderLabel:self.date];
     [NUIRenderer renderLabel:self.user];
@@ -38,7 +41,7 @@
     CGSize size = [self.message.text sizeWithFont:self.message.font constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
     CGFloat height = size.height;
     
-    return height + self.date.frame.size.height + 18;
+    return height + self.date.frame.size.height + 25;
 }
 
 @end
