@@ -135,7 +135,7 @@
 }
 
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 74;
+    return 66;
 }
 
 #pragma mark - Table view delegate

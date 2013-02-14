@@ -411,7 +411,7 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 #pragma mark - Users in label
 
 -(void) setUsersInLabelWithNumber:(NSNumber *)number{
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ %@", [NSString fontAwesomeIconStringForIconIdentifier: @"icon-group"], [number stringValue]]];
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ %@", [NSString fontAwesomeIconStringForIconIdentifier: @"icon-user"], [number stringValue]]];
     [attributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(1, [attributedString.string length] - 1)];
     [attributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:kFontAwesomeFamilyName size:14] range:NSMakeRange(0, 1)];
     
