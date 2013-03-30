@@ -19,6 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        // someplace where you create the UINavigationController
     }
     return self;
 }
@@ -26,7 +27,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    UINavigationBar *navBar = [[UINavigationBar alloc] init];
+    UIImage *image = [UIImage imageNamed:@"MessageInputBarBackground.png"];
+    [navBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)didReceiveMemoryWarning

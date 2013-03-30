@@ -33,6 +33,7 @@
     GCVenuesViewController *venuesViewController = [[GCVenuesViewController alloc] init];
     
     self.navigationController = [[GCNavigationController alloc] initWithRootViewController:venuesViewController];
+
     
     [self initializeVariables];
     

@@ -11,6 +11,7 @@
 		3A03182216C37ED100406308 /* GCMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A03182116C37ED100406308 /* GCMessageCell.m */; };
 		3A03182416C37EEA00406308 /* GCMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A03182316C37EEA00406308 /* GCMessageCell.xib */; };
 		3A3F61BC16CC23350033085E /* GCVenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3F61BB16CC23350033085E /* GCVenuesViewController.m */; };
+		3A4207FE16CEC41C00547F1E /* topbar_geochat.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A4207FD16CEC41C00547F1E /* topbar_geochat.png */; };
 		3A78E02416C236850067FC2A /* ACPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A78E02316C236850067FC2A /* ACPlaceholderTextView.m */; };
 		3A78E02E16C2369D0067FC2A /* MessageInputBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A78E02616C2369D0067FC2A /* MessageInputBarBackground.png */; };
 		3A78E02F16C2369D0067FC2A /* MessageInputBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A78E02716C2369D0067FC2A /* MessageInputBarBackground@2x.png */; };
@@ -59,6 +60,7 @@
 		3A03182316C37EEA00406308 /* GCMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCMessageCell.xib; sourceTree = "<group>"; };
 		3A3F61BA16CC23350033085E /* GCVenuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCVenuesViewController.h; sourceTree = "<group>"; };
 		3A3F61BB16CC23350033085E /* GCVenuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCVenuesViewController.m; sourceTree = "<group>"; };
+		3A4207FD16CEC41C00547F1E /* topbar_geochat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topbar_geochat.png; sourceTree = "<group>"; };
 		3A78E02216C236850067FC2A /* ACPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACPlaceholderTextView.h; sourceTree = "<group>"; };
 		3A78E02316C236850067FC2A /* ACPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACPlaceholderTextView.m; sourceTree = "<group>"; };
 		3A78E02616C2369D0067FC2A /* MessageInputBarBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MessageInputBarBackground.png; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				3AA1003416C5CC1300ACA768 /* SkyBlue.nss */,
 				3A78E02716C2369D0067FC2A /* MessageInputBarBackground@2x.png */,
 				3A78E02816C2369D0067FC2A /* MessageInputFieldBackground.png */,
+				3A4207FD16CEC41C00547F1E /* topbar_geochat.png */,
 				3A8C342F16C42C1B00088A97 /* default_avatar.png */,
 				3A78E02916C2369D0067FC2A /* MessageInputFieldBackground@2x.png */,
 				3A78E02A16C2369D0067FC2A /* SendButton.png */,
@@ -361,6 +364,7 @@
 				3AC7574816CAD15C00C92790 /* README.md in Resources */,
 				3AC7574916CAD15C00C92790 /* FontAwesome.ttf in Resources */,
 				3ACC8A6516CB26E10086084B /* GCPlaceCell.xib in Resources */,
+				3A4207FE16CEC41C00547F1E /* topbar_geochat.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

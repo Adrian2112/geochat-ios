@@ -7,7 +7,7 @@
 //
 #define GC_APP_DELEGATE() ((GCAppDelegate *)[[UIApplication sharedApplication] delegate])
 
-#define TEST 0
+#define TEST 1
 
 # if TEST == 1
 #define HOST @"localhost"

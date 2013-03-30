@@ -63,7 +63,7 @@ SmallLabel {
     font-color: #8F8F91;
 }
 NavigationBar {
-    background-color: #00ADEF;
+    background-image: topbar_geochat.png;
     font-name: @primaryFontNameBold;
     font-size: 22;
     font-color: #FFFFFF;
