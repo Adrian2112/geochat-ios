@@ -81,7 +81,6 @@
     int mapHeight = self.map.frame.size.height;
     self.placesTableView.frame = CGRectMake(0, mapHeight, _tableViewController.view.frame.size.width, _tableViewController.view.frame.size.height - mapHeight);
     
-    self.placesTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.placesTableView.dataSource = self;
     self.placesTableView.delegate = self;
     [self.view addSubview:self.placesTableView];

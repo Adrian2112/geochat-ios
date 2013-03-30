@@ -13,7 +13,6 @@
 @interface GCPlaceCell()
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *usersLabel;
-@property (weak, nonatomic) IBOutlet UIView *backgroundView;
 
 @end
 
@@ -25,20 +24,9 @@
 @synthesize image = _image;
 @synthesize usersLabel = _usersLabel;
 @synthesize distanceLabel = _distanceLabel;
-@synthesize backgroundView = _backgroundView_;
 
 -(void) layoutSubviews {
     [super layoutSubviews];
-    self.backgroundColor = [UIColor colorWithRed:215/255.0f green:215/255.0f blue:215/255.0f alpha:1.0f];
-    
-    // Add a bottomBorder.
-    CALayer *bottomBorder = [CALayer layer];
-    bottomBorder.frame = CGRectMake(0.0f, self.backgroundView.frame.origin.y + self.backgroundView.frame.size.height - 4, self.backgroundView.frame.size.width, 2.0f);
-    bottomBorder.backgroundColor = [UIColor colorWithRed:109/255.0f green:109/255.0f blue:109/255.0f alpha:1.0f].CGColor;
-    [self.backgroundView.layer addSublayer:bottomBorder];
-    
-    self.backgroundView.layer.cornerRadius = 2;
-    self.backgroundView.layer.masksToBounds = YES;
 }
 
 -(void) setUsers:(NSNumber *)users{
