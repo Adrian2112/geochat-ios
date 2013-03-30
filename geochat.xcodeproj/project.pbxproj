@@ -12,17 +12,18 @@
 		3A03182416C37EEA00406308 /* GCMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A03182316C37EEA00406308 /* GCMessageCell.xib */; };
 		3A3F61BC16CC23350033085E /* GCVenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3F61BB16CC23350033085E /* GCVenuesViewController.m */; };
 		3A78E02416C236850067FC2A /* ACPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A78E02316C236850067FC2A /* ACPlaceholderTextView.m */; };
-		3A78E02E16C2369D0067FC2A /* MessageInputBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A78E02616C2369D0067FC2A /* MessageInputBarBackground.png */; };
-		3A78E02F16C2369D0067FC2A /* MessageInputBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A78E02716C2369D0067FC2A /* MessageInputBarBackground@2x.png */; };
-		3A78E03016C2369D0067FC2A /* MessageInputFieldBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A78E02816C2369D0067FC2A /* MessageInputFieldBackground.png */; };
-		3A78E03116C2369D0067FC2A /* MessageInputFieldBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A78E02916C2369D0067FC2A /* MessageInputFieldBackground@2x.png */; };
-		3A78E03216C2369D0067FC2A /* SendButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A78E02A16C2369D0067FC2A /* SendButton.png */; };
-		3A78E03316C2369D0067FC2A /* SendButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A78E02B16C2369D0067FC2A /* SendButton@2x.png */; };
-		3A78E03416C2369D0067FC2A /* SendButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A78E02C16C2369D0067FC2A /* SendButtonHighlighted.png */; };
-		3A78E03516C2369D0067FC2A /* SendButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A78E02D16C2369D0067FC2A /* SendButtonHighlighted@2x.png */; };
 		3A7FA55917077DE900DF8DF0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7FA55817077DE900DF8DF0 /* QuartzCore.framework */; };
-		3A8C343016C42C1B00088A97 /* default_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C342F16C42C1B00088A97 /* default_avatar.png */; };
-		3AA1003516C5CC1300ACA768 /* SkyBlue.nss in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1003416C5CC1300ACA768 /* SkyBlue.nss */; };
+		3A7FA56D1707B15B00DF8DF0 /* ButtonMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7FA55F1707B15B00DF8DF0 /* ButtonMenu.png */; };
+		3A7FA56E1707B15B00DF8DF0 /* ButtonMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7FA5601707B15B00DF8DF0 /* ButtonMenu@2x.png */; };
+		3A7FA56F1707B15B00DF8DF0 /* default_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7FA5611707B15B00DF8DF0 /* default_avatar.png */; };
+		3A7FA5731707B15B00DF8DF0 /* MessageInputBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7FA5651707B15B00DF8DF0 /* MessageInputBarBackground.png */; };
+		3A7FA5741707B15B00DF8DF0 /* MessageInputBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7FA5661707B15B00DF8DF0 /* MessageInputBarBackground@2x.png */; };
+		3A7FA5751707B15B00DF8DF0 /* MessageInputFieldBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7FA5671707B15B00DF8DF0 /* MessageInputFieldBackground.png */; };
+		3A7FA5761707B15B00DF8DF0 /* MessageInputFieldBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7FA5681707B15B00DF8DF0 /* MessageInputFieldBackground@2x.png */; };
+		3A7FA5771707B15B00DF8DF0 /* SendButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7FA5691707B15B00DF8DF0 /* SendButton.png */; };
+		3A7FA5781707B15B00DF8DF0 /* SendButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7FA56A1707B15B00DF8DF0 /* SendButton@2x.png */; };
+		3A7FA5791707B15B00DF8DF0 /* SendButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7FA56B1707B15B00DF8DF0 /* SendButtonHighlighted.png */; };
+		3A7FA57A1707B15B00DF8DF0 /* SendButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7FA56C1707B15B00DF8DF0 /* SendButtonHighlighted@2x.png */; };
 		3AA1B6F216C1876E001EE4E8 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1B6F116C1876E001EE4E8 /* data.plist */; };
 		3AA1B73A16C1C070001EE4E8 /* GCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1B73916C1C06F001EE4E8 /* GCNavigationController.m */; };
 		3AA1B74116C1E61C001EE4E8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA1B74016C1E61C001EE4E8 /* CoreLocation.framework */; };
@@ -62,17 +63,18 @@
 		3A3F61BB16CC23350033085E /* GCVenuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCVenuesViewController.m; sourceTree = "<group>"; };
 		3A78E02216C236850067FC2A /* ACPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACPlaceholderTextView.h; sourceTree = "<group>"; };
 		3A78E02316C236850067FC2A /* ACPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACPlaceholderTextView.m; sourceTree = "<group>"; };
-		3A78E02616C2369D0067FC2A /* MessageInputBarBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MessageInputBarBackground.png; sourceTree = "<group>"; };
-		3A78E02716C2369D0067FC2A /* MessageInputBarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MessageInputBarBackground@2x.png"; sourceTree = "<group>"; };
-		3A78E02816C2369D0067FC2A /* MessageInputFieldBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MessageInputFieldBackground.png; sourceTree = "<group>"; };
-		3A78E02916C2369D0067FC2A /* MessageInputFieldBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MessageInputFieldBackground@2x.png"; sourceTree = "<group>"; };
-		3A78E02A16C2369D0067FC2A /* SendButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SendButton.png; sourceTree = "<group>"; };
-		3A78E02B16C2369D0067FC2A /* SendButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SendButton@2x.png"; sourceTree = "<group>"; };
-		3A78E02C16C2369D0067FC2A /* SendButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SendButtonHighlighted.png; sourceTree = "<group>"; };
-		3A78E02D16C2369D0067FC2A /* SendButtonHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SendButtonHighlighted@2x.png"; sourceTree = "<group>"; };
 		3A7FA55817077DE900DF8DF0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		3A8C342F16C42C1B00088A97 /* default_avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_avatar.png; sourceTree = "<group>"; };
-		3AA1003416C5CC1300ACA768 /* SkyBlue.nss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SkyBlue.nss; sourceTree = "<group>"; };
+		3A7FA55F1707B15B00DF8DF0 /* ButtonMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonMenu.png; sourceTree = "<group>"; };
+		3A7FA5601707B15B00DF8DF0 /* ButtonMenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ButtonMenu@2x.png"; sourceTree = "<group>"; };
+		3A7FA5611707B15B00DF8DF0 /* default_avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_avatar.png; sourceTree = "<group>"; };
+		3A7FA5651707B15B00DF8DF0 /* MessageInputBarBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MessageInputBarBackground.png; sourceTree = "<group>"; };
+		3A7FA5661707B15B00DF8DF0 /* MessageInputBarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MessageInputBarBackground@2x.png"; sourceTree = "<group>"; };
+		3A7FA5671707B15B00DF8DF0 /* MessageInputFieldBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MessageInputFieldBackground.png; sourceTree = "<group>"; };
+		3A7FA5681707B15B00DF8DF0 /* MessageInputFieldBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MessageInputFieldBackground@2x.png"; sourceTree = "<group>"; };
+		3A7FA5691707B15B00DF8DF0 /* SendButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SendButton.png; sourceTree = "<group>"; };
+		3A7FA56A1707B15B00DF8DF0 /* SendButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SendButton@2x.png"; sourceTree = "<group>"; };
+		3A7FA56B1707B15B00DF8DF0 /* SendButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SendButtonHighlighted.png; sourceTree = "<group>"; };
+		3A7FA56C1707B15B00DF8DF0 /* SendButtonHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SendButtonHighlighted@2x.png"; sourceTree = "<group>"; };
 		3AA1B6F116C1876E001EE4E8 /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = data.plist; path = geochat/data.plist; sourceTree = "<group>"; };
 		3AA1B73816C1C06F001EE4E8 /* GCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCNavigationController.h; sourceTree = "<group>"; };
 		3AA1B73916C1C06F001EE4E8 /* GCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCNavigationController.m; sourceTree = "<group>"; };
@@ -139,18 +141,27 @@
 		3A78E02516C2369D0067FC2A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				3A78E02616C2369D0067FC2A /* MessageInputBarBackground.png */,
-				3AA1003416C5CC1300ACA768 /* SkyBlue.nss */,
-				3A78E02716C2369D0067FC2A /* MessageInputBarBackground@2x.png */,
-				3A78E02816C2369D0067FC2A /* MessageInputFieldBackground.png */,
-				3A8C342F16C42C1B00088A97 /* default_avatar.png */,
-				3A78E02916C2369D0067FC2A /* MessageInputFieldBackground@2x.png */,
-				3A78E02A16C2369D0067FC2A /* SendButton.png */,
-				3A78E02B16C2369D0067FC2A /* SendButton@2x.png */,
-				3A78E02C16C2369D0067FC2A /* SendButtonHighlighted.png */,
-				3A78E02D16C2369D0067FC2A /* SendButtonHighlighted@2x.png */,
+				3A7FA55E1707B10100DF8DF0 /* images */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		3A7FA55E1707B10100DF8DF0 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				3A7FA55F1707B15B00DF8DF0 /* ButtonMenu.png */,
+				3A7FA5601707B15B00DF8DF0 /* ButtonMenu@2x.png */,
+				3A7FA5611707B15B00DF8DF0 /* default_avatar.png */,
+				3A7FA5651707B15B00DF8DF0 /* MessageInputBarBackground.png */,
+				3A7FA5661707B15B00DF8DF0 /* MessageInputBarBackground@2x.png */,
+				3A7FA5671707B15B00DF8DF0 /* MessageInputFieldBackground.png */,
+				3A7FA5681707B15B00DF8DF0 /* MessageInputFieldBackground@2x.png */,
+				3A7FA5691707B15B00DF8DF0 /* SendButton.png */,
+				3A7FA56A1707B15B00DF8DF0 /* SendButton@2x.png */,
+				3A7FA56B1707B15B00DF8DF0 /* SendButtonHighlighted.png */,
+				3A7FA56C1707B15B00DF8DF0 /* SendButtonHighlighted@2x.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 		3AA1B74316C1FB33001EE4E8 /* Controllers */ = {
@@ -349,22 +360,23 @@
 				3AF0C34216C0DFDB009A3551 /* Default-568h@2x.png in Resources */,
 				3AF0C35216C0E05F009A3551 /* GCLoginViewController.xib in Resources */,
 				3AA1B6F216C1876E001EE4E8 /* data.plist in Resources */,
-				3A78E02E16C2369D0067FC2A /* MessageInputBarBackground.png in Resources */,
-				3A78E02F16C2369D0067FC2A /* MessageInputBarBackground@2x.png in Resources */,
-				3A78E03016C2369D0067FC2A /* MessageInputFieldBackground.png in Resources */,
-				3A78E03116C2369D0067FC2A /* MessageInputFieldBackground@2x.png in Resources */,
-				3A78E03216C2369D0067FC2A /* SendButton.png in Resources */,
-				3A78E03316C2369D0067FC2A /* SendButton@2x.png in Resources */,
-				3A78E03416C2369D0067FC2A /* SendButtonHighlighted.png in Resources */,
-				3A78E03516C2369D0067FC2A /* SendButtonHighlighted@2x.png in Resources */,
 				3A03182416C37EEA00406308 /* GCMessageCell.xib in Resources */,
-				3A8C343016C42C1B00088A97 /* default_avatar.png in Resources */,
-				3AA1003516C5CC1300ACA768 /* SkyBlue.nss in Resources */,
 				3AC7573A16CAD15C00C92790 /* .gitignore in Resources */,
 				3AC7573B16CAD15C00C92790 /* .gitmodules in Resources */,
 				3AC7574816CAD15C00C92790 /* README.md in Resources */,
 				3AC7574916CAD15C00C92790 /* FontAwesome.ttf in Resources */,
 				3ACC8A6516CB26E10086084B /* GCPlaceCell.xib in Resources */,
+				3A7FA56D1707B15B00DF8DF0 /* ButtonMenu.png in Resources */,
+				3A7FA56E1707B15B00DF8DF0 /* ButtonMenu@2x.png in Resources */,
+				3A7FA56F1707B15B00DF8DF0 /* default_avatar.png in Resources */,
+				3A7FA5731707B15B00DF8DF0 /* MessageInputBarBackground.png in Resources */,
+				3A7FA5741707B15B00DF8DF0 /* MessageInputBarBackground@2x.png in Resources */,
+				3A7FA5751707B15B00DF8DF0 /* MessageInputFieldBackground.png in Resources */,
+				3A7FA5761707B15B00DF8DF0 /* MessageInputFieldBackground@2x.png in Resources */,
+				3A7FA5771707B15B00DF8DF0 /* SendButton.png in Resources */,
+				3A7FA5781707B15B00DF8DF0 /* SendButton@2x.png in Resources */,
+				3A7FA5791707B15B00DF8DF0 /* SendButtonHighlighted.png in Resources */,
+				3A7FA57A1707B15B00DF8DF0 /* SendButtonHighlighted@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
