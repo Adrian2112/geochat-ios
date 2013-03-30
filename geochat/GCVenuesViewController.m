@@ -76,6 +76,8 @@
     // hack: if not set to empty, the first time it puts the date it is not placed in the correct position
     _tableViewController.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@""];
     
+    _tableViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     self.placesTableView = _tableViewController.tableView;
     
     int mapHeight = self.map.frame.size.height;
@@ -179,6 +181,7 @@
         if (indexPath) {
             [self.placesTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
         }
+        _tableViewController.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     }
 }
 
