@@ -80,8 +80,8 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.allowsSelection = NO;
-//    _tableView.backgroundColor = [UIColor colorWithRed:0.859 green:0.886 blue:0.929 alpha:1];
-//    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.backgroundColor = [UIColor colorWithRed:0.945 green:0.945 blue:0.945 alpha:1];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     
     // Create messageInputBar to contain _textView, messageInputBarBackgroundImageView, & _sendButton.

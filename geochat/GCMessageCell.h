@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *date;
 @property (weak, nonatomic) IBOutlet UILabel *message;
 @property (weak, nonatomic) IBOutlet UILabel *user;
+@property (weak, nonatomic) IBOutlet UIView *messageBackground;
 
 -(CGFloat)getHeight;
 

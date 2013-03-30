@@ -15,6 +15,7 @@
 @synthesize message = _message;
 @synthesize date = _date;
 @synthesize user = _user;
+@synthesize messageBackground = _messageBackground;
 
 -(void) awakeFromNib{
     self.photo.image = [UIImage imageNamed:@"default_avatar.png"];
@@ -23,11 +24,23 @@
 -(void) layoutSubviews{
     [super layoutSubviews];
     
-    self.backgroundColor = [UIColor colorWithRed:215/255.0f green:215/255.0f blue:215/255.0f alpha:1.0f];
+    CALayer *topLayer = [CALayer layer];
+    topLayer.borderColor = [UIColor colorWithRed: 232/255.0 green:232/255.0 blue:232/255.0 alpha:1.0].CGColor;
+    topLayer.borderWidth = 1;
+    topLayer.frame = CGRectMake(0, 0, self.message.frame.size.width, 1);
+    
+    [self.message.layer addSublayer:topLayer];
+    self.messageBackground.layer.cornerRadius = 8.0;
+    self.messageBackground.layer.masksToBounds = YES;
+    self.messageBackground.layer.borderColor = [UIColor colorWithRed: 235/255.0 green:235/255.0 blue:235/255.0 alpha:1.0].CGColor;
+    self.messageBackground.layer.borderWidth = 1;
     
     self.message.font = [UIFont fontWithName:self.message.font.fontName size:14.0f];
-    self.date.font = [UIFont fontWithName:self.date.font.fontName size:11.0f];
-    self.user.font = [UIFont fontWithName:self.user.font.fontName size:11.0f];
+    self.date.font = [UIFont fontWithName:self.date.font.fontName size:10.0f];
+    self.user.font = [UIFont fontWithName:self.user.font.fontName size:10.0f];
+    
+    self.photo.layer.cornerRadius = 3.0;
+    self.photo.layer.masksToBounds = YES;
     
 }
 
@@ -36,7 +49,7 @@
     CGSize size = [self.message.text sizeWithFont:self.message.font constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
     CGFloat height = size.height;
     
-    return height + self.date.frame.size.height + 25;
+    return height + self.date.frame.size.height + 35;
 }
 
 @end
