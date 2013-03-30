@@ -4,7 +4,6 @@ PODS:
 - Foursquare-iOS-API (1.1.0):
   - JSONKit (~> 1.4)
 - JSONKit (1.5pre)
-- NUI (0.2.5)
 - SDWebImage (3.1):
   - SDWebImage/Main (= 3.1)
 - SDWebImage/Main (3.1)
@@ -14,7 +13,6 @@ PODS:
 DEPENDENCIES:
 - AFNetworking (~> 1.1.0)
 - Foursquare-iOS-API (~> 1.1.0)
-- NUI (~> 0.2.5)
 - SDWebImage (~> 3.1.x)
 - SocketRocket (from `./Libraries/SocketRocket')
 - socket.IO (from `./Libraries/socket.IO')
@@ -29,7 +27,6 @@ SPEC CHECKSUMS:
   AFNetworking: 761a418233d280c1e0580bcb76ff9cb4c3073d17
   Foursquare-iOS-API: fd545c468ea39d46e3dc78a81abd87456f9f4996
   JSONKit: 3d4708953ea7ae399a49777372d8b060a43ddd27
-  NUI: 5a78f196ad14a4027ae842ca27de085576dc77c6
   SDWebImage: 9e70e5dd0c69d1a043180cd2c5e1d0cd1e4ebcd7
   SDWebImage/Main: 9e70e5dd0c69d1a043180cd2c5e1d0cd1e4ebcd7
   SocketRocket: c384324bf2d70c6abaa66948657352b789659d77

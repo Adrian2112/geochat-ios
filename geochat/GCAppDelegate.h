@@ -7,7 +7,7 @@
 //
 #define GC_APP_DELEGATE() ((GCAppDelegate *)[[UIApplication sharedApplication] delegate])
 
-#define TEST 0
+#define TEST 1
 
 # if TEST == 1
 #define HOST @"localhost"
@@ -22,7 +22,6 @@
 # endif
 
 #import <UIKit/UIKit.h>
-#import "NUIAppearance.h"
 
 @class GCLoginViewController;
 @class GCNavigationController;

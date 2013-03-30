@@ -11,7 +11,6 @@
 #import "GCVenuesViewController.h"
 #import "GCAppDelegate.h"
 #import "GCConversationViewController.h"
-#import <NUI/UIBarButtonItem+NUI.h>
 #import "NSString+FontAwesome.h"
 #import "FAImageView.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -46,7 +45,6 @@
     
     UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logout:)];
     self.navigationItem.rightBarButtonItem = logoutButton;
-    [NUIRenderer renderBarButtonItem:logoutButton];
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton.title = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-arrow-left"];

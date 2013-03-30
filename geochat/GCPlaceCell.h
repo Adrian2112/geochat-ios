@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UILabel+NUI.h"
 
 @interface GCPlaceCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *name;

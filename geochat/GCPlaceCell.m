@@ -29,7 +29,6 @@
 
 -(void) layoutSubviews {
     [super layoutSubviews];
-    self.nuiClass = @"none";
     self.backgroundColor = [UIColor colorWithRed:215/255.0f green:215/255.0f blue:215/255.0f alpha:1.0f];
     
     // Add a bottomBorder.

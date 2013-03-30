@@ -23,12 +23,7 @@
 -(void) layoutSubviews{
     [super layoutSubviews];
     
-    self.nuiClass = @"none";
     self.backgroundColor = [UIColor colorWithRed:215/255.0f green:215/255.0f blue:215/255.0f alpha:1.0f];
-
-    [NUIRenderer renderLabel:self.message];
-    [NUIRenderer renderLabel:self.date];
-    [NUIRenderer renderLabel:self.user];
     
     self.message.font = [UIFont fontWithName:self.message.font.fontName size:14.0f];
     self.date.font = [UIFont fontWithName:self.date.font.fontName size:11.0f];

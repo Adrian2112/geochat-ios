@@ -15,7 +15,6 @@
 #import "GCAppDelegate.h"
 #import "GCMessageCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <NUI/UIButton+NUI.h>
 #import "NSString+FontAwesome.h"
 
 #define kChatBarHeight4                      94
@@ -113,7 +112,6 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     
     // Create sendButton.
     self.sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.sendButton.nuiClass = @"none";
     _sendButton.frame = CGRectMake(messageInputBar.frame.size.width-65, 8, 59, 26);
     _sendButton.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin /* multiline input */ | UIViewAutoresizingFlexibleLeftMargin /* landscape */);
     UIEdgeInsets sendButtonEdgeInsets = UIEdgeInsetsMake(0, 13, 0, 13); // 27 x 27
@@ -421,7 +419,6 @@ NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     self.usersIn.attributedText = attributedString;
     self.usersIn.textAlignment = NSTextAlignmentCenter;
     self.usersIn.backgroundColor = [UIColor clearColor];
-    [NUIRenderer renderLabel:self.usersIn withClass:@"UsersIn"];
     
     UIBarButtonItem *usersInButton = [[UIBarButtonItem alloc] initWithCustomView:self.usersIn];
     self.navigationItem.rightBarButtonItem = usersInButton;
