@@ -49,7 +49,7 @@
     CGSize size = [self.message.text sizeWithFont:self.message.font constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
     CGFloat height = size.height;
     
-    return height + self.date.frame.size.height + 35;
+    return height + self.date.frame.size.height + 27;
 }
 
 @end
